@@ -70,6 +70,17 @@ docker ps | grep nextcloud
 
 ---
 
+> **Problema frecuente:** Si aparece el error "Can't write into config directory",
+> corregirlo con:
+> ```bash
+> docker exec -it nextcloud chown -R www-data:www-data /var/www/html/config
+> ```
+> Luego recargar el navegador.
+
+> **Base de datos:** Para este proyecto se usa SQLite por simplicidad.
+> Es suficiente para un entorno de demostración. Para producción se
+> recomienda MySQL/MariaDB.
+
 ## 5. Detener el servicio
 
 ```bash
@@ -125,12 +136,16 @@ docker restart nextcloud
 
 ## Capturas de pantalla
 
-![Pantalla de login de Nextcloud](../screenshots/nextcloud/nextcloud-login.png)
+![Salida de docker compose up -d](../screenshots/nextcloud/01-nextcloud-docker-compose-up.png)
 
-![Panel principal de Nextcloud con archivos](../screenshots/nextcloud/nextcloud-panel.png)
+![Pantalla de instalación inicial](../screenshots/nextcloud/02-nextcloud-instalador.png)
 
-![Subida de un archivo a Nextcloud](../screenshots/nextcloud/nextcloud-subida.png)
+![Pantalla de login de Nextcloud](../screenshots/nextcloud/20-nextcloud-login.png)
 
-![Enlace de compartir un archivo](../screenshots/nextcloud/nextcloud-compartir.png)
+![Panel principal de Nextcloud con archivos](../screenshots/nextcloud/21-nextcloud-panel.png)
 
-![Acceso desde el celular con la app de Nextcloud](../screenshots/nextcloud/nextcloud-celular.png)
+![Subida de un archivo a Nextcloud](../screenshots/nextcloud/22-nextcloud-subida-archivo.png)
+
+![Enlace de compartir un archivo](../screenshots/nextcloud/23-nextcloud-compartir.png)
+
+![Acceso desde el celular con la app de Nextcloud](../screenshots/nextcloud/24-nextcloud-celular.png)

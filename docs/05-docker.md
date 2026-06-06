@@ -162,6 +162,22 @@ Cada servicio tiene su propio directorio en el home del usuario:
 
 ---
 
+## Verificación final — Todos los servicios
+
+Para verificar que todos los contenedores están corriendo correctamente:
+
+```bash
+docker ps
+```
+
+La salida debe mostrar los siguientes contenedores en estado `Up` o `healthy`:
+- `pihole`
+- `jellyfin`
+- `nextcloud`
+- `portainer`
+
+---
+
 ## Fuentes
 
 - Docker Engine Installation — Ubuntu: https://docs.docker.com/engine/install/ubuntu/
@@ -170,8 +186,10 @@ Cada servicio tiene su propio directorio en el home del usuario:
 
 ## Capturas de pantalla
 
-![Salida de docker run hello-world](../screenshots/docker/hello-world.png)
+![Salida de docker --version](../screenshots/docker/01-docker-version.png)
 
-![Salida de docker ps con todos los contenedores corriendo](../screenshots/docker/docker-ps.png)
+![Salida de docker run hello-world](../screenshots/docker/02-docker-hello-world.png)
 
-![Salida de docker images](../screenshots/docker/docker-images.png)
+![Salida de docker ps con todos los contenedores corriendo](../screenshots/docker/20-docker-ps-todos-servicios.png)
+
+![Salida de docker images](../screenshots/docker/21-docker-images.png)

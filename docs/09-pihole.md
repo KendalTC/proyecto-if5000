@@ -38,6 +38,8 @@ services:
   pihole:
     image: pihole/pihole:latest
     container_name: pihole
+    dns:
+      - 8.8.8.8
     ports:
       - "53:53/tcp"
       - "53:53/udp"
@@ -54,6 +56,10 @@ volumes:
   pihole_dnsmasq:
 ```
 
+> **Nota:** La línea `dns: 8.8.8.8` es necesaria para que Pi-hole pueda resolver
+> DNS durante su inicialización y descargar las listas de bloqueo. Sin esto,
+> Pi-hole queda en estado `unhealthy`.
+
 ---
 
 ## 4. Levantar el servicio
@@ -63,7 +69,8 @@ cd ~/pihole
 docker compose up -d
 ```
 
-> **Nota:** Si el puerto 53 está ocupado por `systemd-resolved`, ejecutar:
+> **Problema frecuente:** El puerto 53 puede estar ocupado por `systemd-resolved`,
+> el servicio DNS por defecto de Ubuntu. Para resolverlo:
 > ```bash
 > sudo systemctl stop systemd-resolved
 > sudo systemctl disable systemd-resolved
@@ -82,6 +89,12 @@ docker ps | grep pihole
 ```bash
 docker exec -it pihole pihole setpassword admin1234
 ```
+
+> **Nota:** Si la contraseña del `docker-compose.yml` no se aplica automáticamente,
+> cambiarla manualmente con:
+> ```bash
+> docker exec -it pihole pihole setpassword admin1234
+> ```
 
 ---
 
@@ -138,10 +151,19 @@ sudo resolvectl dns <interfaz> 100.91.206.50
 
 ## Capturas de pantalla
 
-![Dashboard de Pi-hole con estadísticas de DNS](../screenshots/pihole/pihole-dashboard.png)
+![salida de docker compose up -d](../screenshots/pihole/01-pihole-docker-compose-up.png)
 
-![Gráfico de consultas bloqueadas vs. permitidas](../screenshots/pihole/pihole-grafico.png)
+![Dashboard de Pi-hole con estadísticas de DNS](../screenshots/pihole/20-pihole-dashboard.png)
 
-![Lista de dominios bloqueados](../screenshots/pihole/pihole-lista-bloqueo.png)
+![Lista de dominios bloqueados](../screenshots/pihole/21-pihole-blocklist.png)
 
-![Dispositivo cliente configurado con Pi-hole como DNS](../screenshots/pihole/pihole-cliente-dns.png)
+![Gráfico de consultas DNS](../screenshots/pihole/22-pihole-grafico-consultas.png)
+
+![Dispositivo cliente configurado con Pi-hole como DNS](../screenshots/pihole/23-pihole-cliente-dns.png)
+
+---
+
+## Fuentes
+
+- Pi-hole Docker — Repositorio oficial: https://github.com/pi-hole/docker-pi-hole
+- Pi-hole Documentation: https://docs.pi-hole.net

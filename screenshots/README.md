@@ -1,82 +1,128 @@
-# Guía de capturas de pantalla
+# Capturas de pantalla
 
-Este directorio contiene las evidencias visuales del proyecto. Cada subdirectorio corresponde a un servicio o componente del sistema. A continuación se detalla qué capturar en cada carpeta.
+Convención de nombres: `##-descripcion-significativa.png`
+
+- `01–19` → instalación (proceso paso a paso)
+- `20–39` → pruebas (servicios funcionando, accesos, demos)
+- `40+`   → opcionales (monitoreo, app adicional)
 
 ---
 
 ## `virtualbox/`
 
-- VM creada con los parámetros correctos (RAM 4096 MB, 2 CPUs, disco 50 GB)
-- Configuración de red Bridged Adapter con MediaTek Wi-Fi 6 MT7921
-- Lista de snapshots: "Ubuntu base actualizado", "Docker instalado OK", "Portainer instalado OK", "Acceso remoto Tailscale verificado", "Nextcloud instalado OK", "Jellyfin instalado OK"
-- Consola de VirtualBox mostrando la VM en ejecución
+| Archivo | Estado |
+|---------|--------|
+| `01-vm-hardware-configuracion.png` | ⏳ pendiente |
+| `02-vm-disco-50gb.png` | ⏳ pendiente |
+| `03-vm-red-bridged-adapter.png` | ✅ |
+| `20-vm-corriendo.png` | ✅ |
+| `21-vm-snapshots-lista.png` | ✅ |
 
 ## `ubuntu/`
 
-- Terminal con la salida de `ip a` (mostrando IP 192.168.50.100)
-- Terminal con la salida de `free -h` (memoria RAM disponible)
-- Terminal con la salida de `df -h` (uso del disco)
-- Terminal con `uname -a` (versión del SO)
-- Proceso de actualización del sistema (`apt update && apt upgrade`)
+| Archivo | Estado |
+|---------|--------|
+| `01-instalador-red-dhcp.png` | ✅ |
+| `02-instalador-mirror.png` | ✅ |
+| `03-instalador-disco.png` | ✅ |
+| `04-instalador-perfil.png` | ✅ |
+| `05-instalador-openssh.png` | ✅ |
+| `06-instalador-instalando.png` | ✅ |
+| `07-instalador-ip-estatica.png` | ✅ |
+| `20-ubuntu-apt-update.png` | ✅ |
+| `21-ping-internet.png` | ⏳ pendiente |
+| `22-ping-dns.png` | ⏳ pendiente |
 
 ## `ssh/`
 
-- Conexión SSH exitosa desde PowerShell en Windows (`ssh adminuser@192.168.50.100`)
-- Conexión SSH exitosa vía Tailscale (`ssh adminuser@100.127.183.41`)
-- Conexión SSH desde el celular (app Termius u otra)
-- Salida de `who` mostrando múltiples usuarios conectados simultáneamente
+| Archivo | Estado |
+|---------|--------|
+| `01-ssh-primera-conexion-windows.png` | ✅ |
+| `20-ssh-tailscale-conexion.png` | ✅ |
+| `21-ssh-otra-red-tailscale.png` | ⏳ pendiente |
 
 ## `docker/`
 
-- Salida de `docker ps` con todos los contenedores corriendo
-- Salida de `docker run hello-world` (verificación inicial)
-- Salida de `docker images` listando las imágenes descargadas
+| Archivo | Estado |
+|---------|--------|
+| `01-docker-version.png` | ✅ |
+| `02-docker-hello-world.png` | ✅ |
+| `03-docker-instalacion-repositorio.png` | ✅ |
+| `20-docker-ps-todos-servicios.png` | ✅ |
+| `21-docker-images.png` | ✅ |
 
 ## `portainer/`
 
-- Panel principal de Portainer en el navegador (`http://100.127.183.41:9000`)
-- Vista de contenedores activos en Portainer
-- Detalle de un contenedor (logs, estadísticas)
+| Archivo | Estado |
+|---------|--------|
+| `01-portainer-docker-ps.png` | ✅ |
+| `20-portainer-home.png` | ✅ |
+| `21-portainer-contenedores.png` | ✅ |
+| `22-portainer-logs.png` | ⏳ pendiente |
+| `23-portainer-stats.png` | ⏳ pendiente |
 
 ## `nextcloud/`
 
-- Pantalla de login de Nextcloud (`http://100.127.183.41:8080`)
-- Panel principal con archivos
-- Subida de un archivo
-- Compartir un archivo con enlace
-- Acceso desde el celular (app Nextcloud)
+| Archivo | Estado |
+|---------|--------|
+| `01-nextcloud-docker-compose-up.png` | ✅ |
+| `02-nextcloud-instalador.png` | ✅ |
+| `20-nextcloud-login.png` | ✅ |
+| `21-nextcloud-panel.png` | ✅ |
+| `22-nextcloud-subida-archivo.png` | ✅ |
+| `23-nextcloud-compartir.png` | ✅ |
+| `24-nextcloud-celular.png` | ⏳ pendiente |
 
 ## `jellyfin/`
 
-- Panel principal de Jellyfin (`http://100.127.183.41:8096`)
-- Biblioteca de películas/música configurada
-- Reproducción de un archivo multimedia
-- Acceso desde el celular (app Jellyfin)
+| Archivo | Estado |
+|---------|--------|
+| `01-jellyfin-docker-ps.png` | ✅ |
+| `02-jellyfin-instalador.png` | ✅ |
+| `03-jellyfin-biblioteca.png` | ✅ |
+| `20-jellyfin-panel.png` | ✅ |
+| `21-jellyfin-reproduccion.png` | ✅ |
+| `22-jellyfin-celular.png` | ⏳ pendiente |
 
 ## `pihole/`
 
-- Dashboard de Pi-hole con estadísticas de DNS (`http://100.127.183.41:8053/admin`)
-- Gráfico de consultas DNS bloqueadas vs. permitidas
-- Lista de dominios bloqueados
+| Archivo | Estado |
+|---------|--------|
+| `01-pihole-docker-compose-up.png` | ✅ |
+| `20-pihole-dashboard.png` | ✅ |
+| `21-pihole-blocklist.png` | ✅ |
+| `22-pihole-grafico-consultas.png` | ✅ |
+| `23-pihole-cliente-dns.png` | ⏳ pendiente |
 
 ## `tailscale/`
 
-- Panel de admin.tailscale.com mostrando todos los dispositivos conectados
-- IP de Tailscale en el servidor (`tailscale ip`)
-- Ping exitoso desde un cliente al servidor vía Tailscale
+| Archivo | Estado |
+|---------|--------|
+| `01-tailscale-ip.png` | ✅ |
+| `02-tailscale-status.png` | ✅ |
+| `20-tailscale-admin-panel.png` | ⏳ pendiente |
+| `21-tailscale-ssh.png` | ⏳ pendiente |
+| `22-tailscale-ssh-otra-red.png` | ⏳ pendiente |
 
 ## `monitoreo/`
 
-- Dashboard de Grafana con métricas de CPU, RAM y red
-- Panel de Prometheus mostrando métricas recolectadas
-- Vista de cAdvisor con uso de recursos por contenedor
+| Archivo | Estado |
+|---------|--------|
+| `40-grafana-dashboard.png` | ⏳ pendiente |
+| `41-prometheus-targets.png` | ⏳ pendiente |
+| `42-cadvisor-contenedores.png` | ⏳ pendiente |
+
+## `app-adicional/`
+
+| Archivo | Estado |
+|---------|--------|
+| `40-app-adicional-main.png` | ⏳ pendiente |
+| `41-app-adicional-uso.png` | ⏳ pendiente |
 
 ---
 
-**Instrucciones para insertar capturas:**
+**Para insertar capturas en los docs:**
 
-1. Tomar la captura y guardarla en la carpeta correspondiente con un nombre descriptivo (ej: `docker-ps-corriendo.png`).
-2. En el archivo `.md` correspondiente en `docs/`, insertar la imagen con:
-   ```markdown
-   ![Descripción de la imagen](../screenshots/servicio/nombre-archivo.png)
-   ```
+```markdown
+![Descripción](../screenshots/servicio/##-nombre.png)
+```
