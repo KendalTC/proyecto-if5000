@@ -85,10 +85,16 @@ docker inspect portainer | grep -i restart
 
 ## Capturas de pantalla
 
-![Panel principal de Portainer con el ambiente local conectado](../screenshots/portainer/portainer-home.png)
+**Instalación:**
 
-![Lista de contenedores activos en Portainer](../screenshots/portainer/portainer-contenedores.png)
+![Verificación con docker ps tras levantar Portainer — estado Up](../screenshots/portainer/01-portainer-docker-ps.png)
 
-![Logs de un contenedor desde el navegador](../screenshots/portainer/portainer-logs.png)
+**Panel web — Funcionalidades:**
 
-![Estadísticas de uso de recursos por contenedor](../screenshots/portainer/portainer-stats.png)
+![Panel principal de Portainer — ambiente local conectado](../screenshots/portainer/20-portainer-home.png)
+
+![Lista de contenedores activos con estado, puertos y uptime](../screenshots/portainer/21-portainer-contenedores.png)
+
+![Logs de un contenedor en tiempo real desde el navegador](../screenshots/portainer/22-portainer-logs.png)
+
+![Estadísticas de uso de CPU y memoria por contenedor](../screenshots/portainer/23-portainer-stats.png)

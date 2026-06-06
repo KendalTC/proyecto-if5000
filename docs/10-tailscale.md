@@ -135,10 +135,18 @@ ssh adminuser@100.91.206.50
 
 ## Capturas de pantalla
 
-![Panel de admin.tailscale.com con todos los dispositivos conectados](../screenshots/tailscale/tailscale-admin-panel.png)
+**Instalación y autenticación:**
 
-![Salida de tailscale status en el servidor](../screenshots/tailscale/tailscale-status.png)
+![Salida de tailscale ip con la IP asignada: 100.91.206.50](../screenshots/tailscale/01-tailscale-ip.png)
 
-![Tailscale activo en el celular (iOS/Android)](../screenshots/tailscale/tailscale-celular.png)
+![Salida de tailscale status — servidor conectado y activo](../screenshots/tailscale/02-tailscale-status.png)
 
-![Ping exitoso desde el cliente al servidor vía Tailscale](../screenshots/tailscale/tailscale-ping.png)
+**Verificación — Panel de administración:**
+
+![Panel de admin.tailscale.com con todos los dispositivos de la red](../screenshots/tailscale/20-tailscale-admin-panel.png)
+
+**Verificación — Acceso remoto:**
+
+![Conexión SSH exitosa al servidor vía Tailscale](../screenshots/tailscale/21-tailscale-ssh.png)
+
+![Conexión SSH desde una red diferente — demostración de acceso independiente de red local](../screenshots/tailscale/22-tailscale-ssh-otra-red.png)

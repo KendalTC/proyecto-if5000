@@ -142,8 +142,12 @@ ping -c 3 google.com
 
 ## Capturas de pantalla
 
-![Archivo Netplan con IP estática en el editor nano](../screenshots/ubuntu/netplan-static.png)
+**Verificación — IP aplicada:**
 
-![Salida de ip a mostrando IP 192.168.50.100](../screenshots/ubuntu/ip-a-static.png)
+![Salida de ip a mostrando la IP estática 192.168.50.100 en enp0s3](../screenshots/ubuntu/20-ip-a-resultado.png)
 
-![Ping exitoso a gateway y a Internet](../screenshots/ubuntu/ping-ok.png)
+**Verificación — Conectividad:**
+
+![Ping exitoso a 8.8.8.8 — conectividad a Internet verificada](../screenshots/ubuntu/21-ping-internet.png)
+
+![Ping exitoso a google.com — resolución DNS funcionando](../screenshots/ubuntu/22-ping-dns.png)

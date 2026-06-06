@@ -161,10 +161,12 @@ sudo systemctl restart ssh
 
 ## Capturas de pantalla
 
-![Conexión SSH exitosa desde PowerShell en Windows](../screenshots/ssh/ssh-windows-powershell.png)
+**Primera conexión:**
 
-![Conexión SSH exitosa vía Tailscale](../screenshots/ssh/ssh-tailscale.png)
+![Primera conexión SSH desde PowerShell — ssh adminuser@192.168.50.100](../screenshots/ssh/01-ssh-primera-conexion-windows.png)
 
-![Conexión SSH desde el celular (Termius)](../screenshots/ssh/ssh-celular.png)
+**Verificación — Acceso remoto vía Tailscale:**
 
-![Salida de who mostrando múltiples usuarios conectados](../screenshots/ssh/who-usuarios.png)
+![Conexión SSH exitosa vía Tailscale desde la misma red](../screenshots/ssh/20-ssh-tailscale-conexion.png)
+
+![Conexión SSH desde una red diferente — demostración de acceso remoto](../screenshots/ssh/21-ssh-otra-red-tailscale.png)

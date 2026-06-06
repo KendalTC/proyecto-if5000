@@ -151,15 +151,21 @@ sudo resolvectl dns <interfaz> 100.91.206.50
 
 ## Capturas de pantalla
 
-![salida de docker compose up -d](../screenshots/pihole/01-pihole-docker-compose-up.png)
+**Instalación:**
 
-![Dashboard de Pi-hole con estadísticas de DNS](../screenshots/pihole/20-pihole-dashboard.png)
+![Salida de docker compose up -d — Pi-hole iniciando correctamente](../screenshots/pihole/01-pihole-docker-compose-up.png)
 
-![Lista de dominios bloqueados](../screenshots/pihole/21-pihole-blocklist.png)
+**Verificación — Dashboard y estadísticas:**
 
-![Gráfico de consultas DNS](../screenshots/pihole/22-pihole-grafico-consultas.png)
+![Dashboard de Pi-hole con estadísticas de consultas DNS en tiempo real](../screenshots/pihole/20-pihole-dashboard.png)
 
-![Dispositivo cliente configurado con Pi-hole como DNS](../screenshots/pihole/23-pihole-cliente-dns.png)
+![Lista de dominios bloqueados activos](../screenshots/pihole/21-pihole-blocklist.png)
+
+![Gráfico de consultas DNS — proporción bloqueadas vs. permitidas](../screenshots/pihole/22-pihole-grafico-consultas.png)
+
+**Demostración — Cliente configurado:**
+
+![Dispositivo usando Pi-hole como servidor DNS primario](../screenshots/pihole/23-pihole-cliente-dns.png)
 
 ---
 

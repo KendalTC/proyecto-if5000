@@ -127,10 +127,18 @@ scp -r "C:\ruta\carpeta-peliculas" adminuser@192.168.50.100:~/media/peliculas/
 
 ## Capturas de pantalla
 
-![Panel principal de Jellyfin con la biblioteca de películas](../screenshots/jellyfin/jellyfin-panel.png)
+**Instalación:**
 
-![Configuración de la biblioteca de medios](../screenshots/jellyfin/jellyfin-biblioteca.png)
+![Verificación con docker ps tras levantar Jellyfin — estado Up](../screenshots/jellyfin/01-jellyfin-docker-ps.png)
 
-![Reproducción de un archivo de video en el navegador](../screenshots/jellyfin/jellyfin-reproduccion.png)
+![Pantalla de bienvenida del instalador web de Jellyfin](../screenshots/jellyfin/02-jellyfin-instalador.png)
 
-![Acceso desde el celular con la app de Jellyfin](../screenshots/jellyfin/jellyfin-celular.png)
+![Configuración de biblioteca de medios — ruta /media/peliculas](../screenshots/jellyfin/03-jellyfin-biblioteca.png)
+
+**Verificación — Servicio funcionando:**
+
+![Panel principal de Jellyfin con biblioteca de películas cargada](../screenshots/jellyfin/20-jellyfin-panel.png)
+
+![Reproducción de un archivo de video en el navegador](../screenshots/jellyfin/21-jellyfin-reproduccion.png)
+
+![Acceso desde la app oficial de Jellyfin en el celular](../screenshots/jellyfin/22-jellyfin-celular.png)

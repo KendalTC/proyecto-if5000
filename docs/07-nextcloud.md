@@ -136,16 +136,20 @@ docker restart nextcloud
 
 ## Capturas de pantalla
 
-![Salida de docker compose up -d](../screenshots/nextcloud/01-nextcloud-docker-compose-up.png)
+**Instalación:**
 
-![Pantalla de instalación inicial](../screenshots/nextcloud/02-nextcloud-instalador.png)
+![Salida de docker compose up -d — contenedor iniciando correctamente](../screenshots/nextcloud/01-nextcloud-docker-compose-up.png)
+
+![Pantalla de instalación inicial de Nextcloud en el navegador](../screenshots/nextcloud/02-nextcloud-instalador.png)
+
+**Verificación — Funcionalidades:**
 
 ![Pantalla de login de Nextcloud](../screenshots/nextcloud/20-nextcloud-login.png)
 
-![Panel principal de Nextcloud con archivos](../screenshots/nextcloud/21-nextcloud-panel.png)
+![Panel principal con archivos del usuario administrador](../screenshots/nextcloud/21-nextcloud-panel.png)
 
-![Subida de un archivo a Nextcloud](../screenshots/nextcloud/22-nextcloud-subida-archivo.png)
+![Subida de un archivo al almacenamiento](../screenshots/nextcloud/22-nextcloud-subida-archivo.png)
 
-![Enlace de compartir un archivo](../screenshots/nextcloud/23-nextcloud-compartir.png)
+![Compartir un archivo con enlace público](../screenshots/nextcloud/23-nextcloud-compartir.png)
 
-![Acceso desde el celular con la app de Nextcloud](../screenshots/nextcloud/24-nextcloud-celular.png)
+![Acceso desde la app oficial de Nextcloud en el celular](../screenshots/nextcloud/24-nextcloud-celular.png)

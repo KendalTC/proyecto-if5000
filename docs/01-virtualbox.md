@@ -120,12 +120,14 @@ Para hacer una copia de seguridad o compartir la VM:
 
 ## Capturas de pantalla
 
-Insertar las capturas tomadas durante la configuración:
+**Configuración de red:**
 
-![VM creada con parámetros correctos](../screenshots/virtualbox/vm-creada.png)
+![Adaptador 1 configurado en modo Bridged con MediaTek Wi-Fi 6](../screenshots/virtualbox/03-vm-red-bridged-adapter.png)
 
-![Configuración de red Bridged Adapter](../screenshots/virtualbox/red-bridged.png)
+**Verificación — VM en ejecución:**
 
-![Lista de snapshots del proyecto](../screenshots/virtualbox/snapshots.png)
+![VM corriendo en la consola de VirtualBox](../screenshots/virtualbox/20-vm-corriendo.png)
 
-![VM en ejecución desde VirtualBox](../screenshots/virtualbox/vm-corriendo.png)
+**Snapshots del proyecto:**
+
+![Lista de snapshots: Ubuntu base, Docker, Portainer, Tailscale, Nextcloud, Jellyfin](../screenshots/virtualbox/21-vm-snapshots-lista.png)

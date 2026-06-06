@@ -186,10 +186,14 @@ La salida debe mostrar los siguientes contenedores en estado `Up` o `healthy`:
 
 ## Capturas de pantalla
 
-![Salida de docker --version](../screenshots/docker/01-docker-version.png)
+**Instalación:**
 
-![Salida de docker run hello-world](../screenshots/docker/02-docker-hello-world.png)
+![Salida de docker --version confirmando la versión instalada](../screenshots/docker/01-docker-version.png)
 
-![Salida de docker ps con todos los contenedores corriendo](../screenshots/docker/20-docker-ps-todos-servicios.png)
+![Salida de docker run hello-world — verificación de la instalación](../screenshots/docker/02-docker-hello-world.png)
 
-![Salida de docker images](../screenshots/docker/21-docker-images.png)
+**Verificación — Todos los servicios activos:**
+
+![Salida de docker ps con los cuatro contenedores en estado Up](../screenshots/docker/20-docker-ps-todos-servicios.png)
+
+![Salida de docker images con todas las imágenes descargadas](../screenshots/docker/21-docker-images.png)

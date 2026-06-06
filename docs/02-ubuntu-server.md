@@ -153,16 +153,22 @@ sudo apt update
 
 ## Capturas de pantalla
 
-![01 — Configuración de red durante instalación — interfaz enp0s3](../screenshots/ubuntu/01-instalador-configuracion-red.png)
+**Instalación — Paso a paso:**
 
-![02 — IP estática configurada: 192.168.50.100, gateway y DNS 8.8.8.8](../screenshots/ubuntu/02-instalador-ip-estatica-enp0s3.png)
+![Configuración de red durante instalación — interfaz enp0s3 con DHCP](../screenshots/ubuntu/01-instalador-red-dhcp.png)
 
-![03 — Mirror de Ubuntu — verificando conexión durante instalación](../screenshots/ubuntu/03-instalador-mirror-ubuntu.png)
+![Configuración de mirror de Ubuntu — verificando conexión](../screenshots/ubuntu/02-instalador-mirror.png)
 
-![04 — Configuración de disco — 50 GB VBox con LVM](../screenshots/ubuntu/04-instalador-configuracion-disco-50gb.png)
+![Configuración de disco — 50 GB VDI dinámico con LVM](../screenshots/ubuntu/03-instalador-disco.png)
 
-![05 — Perfil del sistema — servidor-if5000, usuario adminuser](../screenshots/ubuntu/05-instalador-perfil-usuario-adminuser.png)
+![Perfil del sistema — hostname: servidor-if5000, usuario: adminuser](../screenshots/ubuntu/04-instalador-perfil.png)
 
-![06 — SSH habilitado durante instalación — Install OpenSSH server marcado](../screenshots/ubuntu/06-instalador-ssh-habilitado.png)
+![Habilitación de OpenSSH durante instalación — "Install OpenSSH server" marcado](../screenshots/ubuntu/05-instalador-openssh.png)
 
-![07 — Progreso de instalación del sistema](../screenshots/ubuntu/07-instalador-instalando-sistema.png)
+![Progreso de instalación del sistema operativo](../screenshots/ubuntu/06-instalador-instalando.png)
+
+![Configuración de IP estática — 192.168.50.100, gateway 192.168.50.1](../screenshots/ubuntu/07-instalador-ip-estatica.png)
+
+**Verificación — Primer arranque:**
+
+![Actualización del sistema con apt update && apt upgrade completada](../screenshots/ubuntu/20-ubuntu-apt-update.png)
