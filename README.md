@@ -118,25 +118,47 @@ docker ps
 
 ---
 
+## Documentación
+
+### Infraestructura base
+
+| # | Documento | Descripción |
+|---|-----------|-------------|
+| 01 | [Configuración de VirtualBox](docs/01-virtualbox.md) | Creación y configuración de la VM |
+| 02 | [Instalación de Ubuntu Server](docs/02-ubuntu-server.md) | Instalación del sistema operativo |
+| 03 | [Configuración de red — Netplan](docs/03-red-netplan.md) | IP estática y configuración de red |
+| 04 | [Acceso remoto SSH](docs/04-ssh.md) | Conexión SSH local y vía Tailscale |
+| 05 | [Instalación de Docker](docs/05-docker.md) | Docker Engine y Docker Compose |
+
+### Servicios Docker
+
+| # | Documento | Puerto |
+|---|-----------|--------|
+| 06 | [Portainer — Administración de Docker](docs/06-portainer.md) | 9000 |
+| 07 | [Nextcloud — Almacenamiento en la nube](docs/07-nextcloud.md) | 8080 |
+| 08 | [Jellyfin — Servidor multimedia](docs/08-jellyfin.md) | 8096 |
+| 09 | [Pi-hole — DNS y bloqueador de anuncios](docs/09-pihole.md) | 8053 |
+| 10 | [Tailscale — VPN](docs/10-tailscale.md) | — |
+
+### Opcionales / En desarrollo
+
+| # | Documento | Estado |
+|---|-----------|--------|
+| 11 | [Aplicación adicional](docs/11-app-adicional.md) | ⏳ Pendiente |
+| 12 | [Monitoreo — Prometheus + Grafana](docs/12-monitoreo-opcional.md) | ⏳ Pendiente |
+
+### Evidencias visuales
+
+- [Capturas de pantalla — índice y estado](screenshots/README.md)
+
+---
+
 ## Estructura del repositorio
 
 ```
 proyecto-if5000/
 ├── README.md                    ← Este archivo
-├── .gitignore
-├── docs/
-│   ├── 01-virtualbox.md         ← Configuración de la VM
-│   ├── 02-ubuntu-server.md      ← Instalación del SO
-│   ├── 03-red-netplan.md        ← Configuración de red
-│   ├── 04-ssh.md                ← Acceso remoto SSH
-│   ├── 05-docker.md             ← Instalación de Docker
-│   ├── 06-portainer.md          ← Administración Docker UI
-│   ├── 07-nextcloud.md          ← Almacenamiento en la nube
-│   ├── 08-jellyfin.md           ← Servidor multimedia
-│   ├── 09-pihole.md             ← DNS y bloqueador de anuncios
-│   ├── 10-tailscale.md          ← VPN Tailscale
-│   ├── 11-app-adicional.md      ← Aplicación adicional (pendiente)
-│   └── 12-monitoreo-opcional.md ← Monitoreo opcional (pendiente)
+├── docs/                        ← Documentación completa (ver tabla anterior)
 ├── compose/
 │   ├── nextcloud/docker-compose.yml
 │   ├── jellyfin/docker-compose.yml
@@ -147,7 +169,7 @@ proyecto-if5000/
 │       ├── 00-installer-config-static.yaml
 │       └── 00-installer-config-dhcp.yaml
 └── screenshots/
-    ├── README.md                ← Guía de capturas
+    ├── README.md                ← Índice de capturas con estado
     ├── virtualbox/
     ├── ubuntu/
     ├── ssh/
@@ -157,7 +179,8 @@ proyecto-if5000/
     ├── jellyfin/
     ├── pihole/
     ├── tailscale/
-    └── monitoreo/
+    ├── monitoreo/
+    └── app-adicional/
 ```
 
 ---
