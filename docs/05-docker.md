@@ -4,7 +4,7 @@
 |---------------|--------------------|
 | Servidor      | servidor-if5000    |
 | IP local      | 192.168.50.100     |
-| IP Tailscale  | 100.127.183.41     |
+| IP Tailscale  | 100.91.206.50     |
 
 ---
 
@@ -32,13 +32,25 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
 
 # Agregar el repositorio oficial de Docker
-echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu noble stable" | sudo tee /etc/apt/sources.list.d/docker.list
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+  https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 # Actualizar la lista de paquetes
 sudo apt update
 
 # Instalar Docker Engine y Docker Compose Plugin
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+> **Nota:** Si la descarga es muy lenta, forzar IPv4:
+> ```bash
+> sudo apt-get -o Acquire::ForceIPv4=true install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+> ```
+
+```bash
 
 # Agregar el usuario adminuser al grupo docker (para ejecutar sin sudo)
 sudo usermod -aG docker adminuser
@@ -147,6 +159,12 @@ Cada servicio tiene su propio directorio en el home del usuario:
     ├── musica/
     └── fotos/
 ```
+
+---
+
+## Fuentes
+
+- Docker Engine Installation — Ubuntu: https://docs.docker.com/engine/install/ubuntu/
 
 ---
 

@@ -3,7 +3,7 @@
 | Campo         | Valor              |
 |---------------|--------------------|
 | Servicio      | Tailscale          |
-| IP del servidor | 100.127.183.41   |
+| IP del servidor | 100.91.206.50   |
 
 ---
 
@@ -12,7 +12,7 @@
 Tailscale es una VPN de tipo mesh basada en el protocolo WireGuard. A diferencia de las VPN tradicionales (que requieren un servidor central), Tailscale crea una red privada directa entre todos los dispositivos, sin importar desde qué red se conecten.
 
 **Ventajas para este proyecto:**
-- Acceso al servidor desde cualquier red (casa, universidad, celular) con la misma IP fija (`100.127.183.41`).
+- Acceso al servidor desde cualquier red (casa, universidad, celular) con la misma IP fija (`100.91.206.50`).
 - No requiere configurar port-forwarding en el router.
 - Cifrado extremo a extremo de todo el tráfico.
 - Funciona aunque el servidor cambie de IP local (DHCP).
@@ -22,17 +22,25 @@ Tailscale es una VPN de tipo mesh basada en el protocolo WireGuard. A diferencia
 ## 2. Instalación en el servidor (Ubuntu Server)
 
 ```bash
-# Descargar e instalar el script oficial de Tailscale
+# Instalar Tailscale con el script oficial
 curl -fsSL https://tailscale.com/install.sh | sh
 
-# Autenticar y conectar el servidor a la red Tailscale
+# Autenticar y conectar el servidor
 sudo tailscale up
 
-# Ver la IP asignada por Tailscale
+# Verificar IP asignada
 tailscale ip
 ```
 
-La IP asignada al servidor es: **100.127.183.41**
+> El script detecta automáticamente la versión de Ubuntu y configura 
+> el repositorio correcto. Internamente ejecuta los mismos pasos que 
+> el método manual pero en un solo comando.
+
+> **Ventaja demostrada:** Durante la instalación se cambió de red WiFi 
+> sin perder la conexión SSH al servidor. La IP de Tailscale 
+> (`100.91.206.50`) se mantuvo estable independientemente de la red local.
+
+La IP asignada al servidor es: **100.91.206.50**
 
 ---
 
@@ -78,7 +86,7 @@ Tras iniciar sesión, el dispositivo obtiene automáticamente su IP en la red Ta
 
 | Dispositivo         | IP Tailscale     | Sistema Operativo |
 |---------------------|-----------------|-------------------|
-| servidor-if5000     | 100.127.183.41  | Ubuntu Server 24.04 |
+| servidor-if5000     | 100.91.206.50  | Ubuntu Server 24.04 |
 | iPhone-15-pro       | 100.68.123.84   | iOS               |
 | kendalltc (Windows) | 100.67.254.26   | Windows 11        |
 
@@ -110,11 +118,18 @@ tailscale ip
 
 ```bash
 # Hacer ping al servidor desde un cliente con Tailscale activo
-ping 100.127.183.41
+ping 100.91.206.50
 
 # Conectar por SSH
-ssh adminuser@100.127.183.41
+ssh adminuser@100.91.206.50
 ```
+
+---
+
+## Fuentes
+
+- Tailscale Documentation: https://tailscale.com/kb
+- Tailscale Download Linux: https://tailscale.com/download/linux
 
 ---
 

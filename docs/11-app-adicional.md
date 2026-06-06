@@ -52,6 +52,6 @@
 
 ## Capturas de pantalla
 
-![Pantalla principal de la aplicación adicional](../screenshots/portainer/app-adicional-main.png)
+![Pantalla principal de la aplicación adicional](../screenshots/app-adicional/app-adicional-main.png)
 
-![Demostración de uso de la aplicación](../screenshots/portainer/app-adicional-uso.png)
+![Demostración de uso de la aplicación](../screenshots/app-adicional/app-adicional-uso.png)

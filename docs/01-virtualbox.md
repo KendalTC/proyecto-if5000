@@ -48,7 +48,7 @@ O bien, en el Administrador de tareas → pestaña Rendimiento → CPU → verif
 
 ### 3.2 Memoria RAM
 
-- Asignar **4096 MB** (4 GB).
+- Asignar **6046 MB** (~6 GB).
 
 ### 3.3 Disco duro virtual
 
@@ -60,7 +60,7 @@ O bien, en el Administrador de tareas → pestaña Rendimiento → CPU → verif
 ### 3.4 Configuración de CPU
 
 1. Con la VM seleccionada → clic en **Configuración** → **Sistema** → pestaña **Procesador**.
-2. Asignar **2 CPUs**.
+2. Asignar **4 CPUs**.
 3. Habilitar **PAE/NX** si está disponible.
 
 ### 3.5 Montar la ISO

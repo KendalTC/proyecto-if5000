@@ -5,7 +5,7 @@
 | Servicio      | Portainer Community Edition      |
 | Puerto        | 9000                             |
 | URL local     | http://192.168.50.100:9000       |
-| URL Tailscale | http://100.127.183.41:9000       |
+| URL Tailscale | http://100.91.206.50:9000       |
 
 ---
 
@@ -51,7 +51,7 @@ docker ps | grep portainer
 
 ## 3. Primera configuración
 
-1. Abrir el navegador y acceder a `http://100.127.183.41:9000`.
+1. Abrir el navegador y acceder a `http://100.91.206.50:9000`.
 2. La primera vez, Portainer solicita crear un usuario administrador:
    - **Username:** admin
    - **Password:** (definida por el grupo — mínimo 12 caracteres)

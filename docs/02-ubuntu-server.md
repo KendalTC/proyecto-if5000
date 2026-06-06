@@ -153,14 +153,16 @@ sudo apt update
 
 ## Capturas de pantalla
 
-Insertar las capturas tomadas durante la instalación y primer arranque:
+![01 — Configuración de red durante instalación — interfaz enp0s3](../screenshots/ubuntu/01-instalador-configuracion-red.png)
 
-![Instalador de Ubuntu Server — pantalla de perfil](../screenshots/ubuntu/instalador-perfil.png)
+![02 — IP estática configurada: 192.168.50.100, gateway y DNS 8.8.8.8](../screenshots/ubuntu/02-instalador-ip-estatica-enp0s3.png)
 
-![Selección de OpenSSH durante instalación](../screenshots/ubuntu/instalador-ssh.png)
+![03 — Mirror de Ubuntu — verificando conexión durante instalación](../screenshots/ubuntu/03-instalador-mirror-ubuntu.png)
 
-![Terminal con salida de ip a](../screenshots/ubuntu/ip-a.png)
+![04 — Configuración de disco — 50 GB VBox con LVM](../screenshots/ubuntu/04-instalador-configuracion-disco-50gb.png)
 
-![Terminal con salida de free -h](../screenshots/ubuntu/free-h.png)
+![05 — Perfil del sistema — servidor-if5000, usuario adminuser](../screenshots/ubuntu/05-instalador-perfil-usuario-adminuser.png)
 
-![Terminal con salida de df -h](../screenshots/ubuntu/df-h.png)
+![06 — SSH habilitado durante instalación — Install OpenSSH server marcado](../screenshots/ubuntu/06-instalador-ssh-habilitado.png)
+
+![07 — Progreso de instalación del sistema](../screenshots/ubuntu/07-instalador-instalando-sistema.png)

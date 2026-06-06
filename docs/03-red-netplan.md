@@ -18,6 +18,10 @@ Los cambios se aplican con el comando `sudo netplan apply`, que reconfigura la r
 
 ---
 
+> **Nota:** En Ubuntu Server 24.04, el archivo de configuración de red generado 
+> automáticamente por el instalador se llama `50-cloud-init.yaml`. 
+> Los cambios de red se realizan sobre este archivo.
+
 ## 2. Ver la configuración actual
 
 ```bash
@@ -25,7 +29,7 @@ Los cambios se aplican con el comando `sudo netplan apply`, que reconfigura la r
 ls /etc/netplan/
 
 # Ver el archivo de configuración activo
-cat /etc/netplan/00-installer-config.yaml
+cat /etc/netplan/50-cloud-init.yaml
 
 # Ver interfaces y direcciones IP actuales
 ip a
@@ -38,7 +42,7 @@ ip a
 Usar esta configuración cuando el servidor opera en la red fija de laboratorio (192.168.50.0/24).
 
 ```bash
-sudo nano /etc/netplan/00-installer-config.yaml
+sudo nano /etc/netplan/50-cloud-init.yaml
 ```
 
 Contenido:
@@ -64,7 +68,7 @@ El archivo de referencia se encuentra en: `config/netplan/00-installer-config-st
 Usar esta configuración cuando el servidor se conecta a una red distinta (por ejemplo, la red de la universidad o una red doméstica diferente). En este caso, la IP es asignada automáticamente por el router.
 
 ```bash
-sudo nano /etc/netplan/00-installer-config.yaml
+sudo nano /etc/netplan/50-cloud-init.yaml
 ```
 
 Contenido:
@@ -89,11 +93,22 @@ Después de editar el archivo:
 
 ```bash
 # Ajustar permisos (requerido por Netplan)
-sudo chmod 600 /etc/netplan/00-installer-config.yaml
+sudo chmod 600 /etc/netplan/50-cloud-init.yaml
 
 # Aplicar la configuración
 sudo netplan apply
 ```
+
+> Si aparece un warning de permisos, corregirlo con:
+> ```bash
+> sudo chmod 600 /etc/netplan/50-cloud-init.yaml
+> sudo netplan apply
+> ```
+
+> **Nota:** Si hay problemas de conectividad con `apt`, forzar IPv4:
+> ```bash
+> sudo apt-get -o Acquire::ForceIPv4=true update
+> ```
 
 ---
 

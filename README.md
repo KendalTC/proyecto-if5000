@@ -36,11 +36,11 @@ Clientes (PC / Celular con Tailscale)
 
 | Servicio   | Puerto | URL Local                          | URL Tailscale                        |
 |------------|--------|------------------------------------|--------------------------------------|
-| Nextcloud  | 8080   | http://192.168.50.100:8080         | http://100.127.183.41:8080           |
-| Jellyfin   | 8096   | http://192.168.50.100:8096         | http://100.127.183.41:8096           |
-| Portainer  | 9000   | http://192.168.50.100:9000         | http://100.127.183.41:9000           |
-| Pi-hole    | 8053   | http://192.168.50.100:8053/admin   | http://100.127.183.41:8053/admin     |
-| SSH        | 22     | ssh adminuser@192.168.50.100       | ssh adminuser@100.127.183.41         |
+| Nextcloud  | 8080   | http://192.168.50.100:8080         | http://100.91.206.50:8080           |
+| Jellyfin   | 8096   | http://192.168.50.100:8096         | http://100.91.206.50:8096           |
+| Portainer  | 9000   | http://192.168.50.100:9000         | http://100.91.206.50:9000           |
+| Pi-hole    | 8053   | http://192.168.50.100:8053/admin   | http://100.91.206.50:8053/admin     |
+| SSH        | 22     | ssh adminuser@192.168.50.100       | ssh adminuser@100.91.206.50         |
 
 ---
 
@@ -54,10 +54,10 @@ Clientes (PC / Celular con Tailscale)
 | Subred            | 192.168.50.0/24          |
 | Gateway           | 192.168.50.1             |
 | DNS               | 8.8.8.8                  |
-| IP Tailscale      | 100.127.183.41           |
+| IP Tailscale      | 100.91.206.50            |
 | SO                | Ubuntu Server 24.04.4 LTS |
-| RAM asignada      | 4096 MB                  |
-| CPUs              | 2                        |
+| RAM asignada      | 6046 MB                  |
+| CPUs              | 4                        |
 | Disco             | 50 GB VDI dinámico       |
 | Red VirtualBox    | Bridged Adapter          |
 
@@ -67,7 +67,7 @@ Clientes (PC / Celular con Tailscale)
 
 | Dispositivo         | IP Tailscale     |
 |---------------------|-----------------|
-| servidor-if5000     | 100.127.183.41  |
+| servidor-if5000     | 100.91.206.50   |
 | iPhone-15-pro       | 100.68.123.84   |
 | kendalltc (Windows) | 100.67.254.26   |
 
@@ -98,7 +98,7 @@ Conectarse al servidor y levantar todos los servicios:
 
 ```bash
 # Conectar vía SSH
-ssh adminuser@100.127.183.41
+ssh adminuser@100.91.206.50
 
 # Verificar Portainer (siempre activo por restart=always)
 docker ps

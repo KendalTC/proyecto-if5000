@@ -5,7 +5,7 @@
 | Servicio      | Jellyfin                         |
 | Puerto        | 8096                             |
 | URL local     | http://192.168.50.100:8096       |
-| URL Tailscale | http://100.127.183.41:8096       |
+| URL Tailscale | http://100.91.206.50:8096       |
 
 ---
 
@@ -102,7 +102,7 @@ scp -r "C:\ruta\carpeta-peliculas" adminuser@192.168.50.100:~/media/peliculas/
 
 ## 7. Configuración inicial en la interfaz web
 
-1. Abrir `http://100.127.183.41:8096` en el navegador.
+1. Abrir `http://100.91.206.50:8096` en el navegador.
 2. Seleccionar el idioma preferido.
 3. Crear la cuenta de administrador:
    - Usuario: `admin`
@@ -120,7 +120,7 @@ scp -r "C:\ruta\carpeta-peliculas" adminuser@192.168.50.100:~/media/peliculas/
 
 - **iOS:** Buscar "Swiftfin" o "Jellyfin" en App Store.
 - **Android:** Buscar "Jellyfin" en Play Store.
-- URL del servidor: `http://100.127.183.41:8096`
+- URL del servidor: `http://100.91.206.50:8096`
 - Iniciar sesión con el usuario administrador.
 
 ---

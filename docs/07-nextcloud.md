@@ -5,7 +5,7 @@
 | Servicio      | Nextcloud                        |
 | Puerto        | 8080                             |
 | URL local     | http://192.168.50.100:8080       |
-| URL Tailscale | http://100.127.183.41:8080       |
+| URL Tailscale | http://100.91.206.50:8080       |
 | Usuario admin | admin                            |
 
 ---
@@ -86,8 +86,8 @@ Por defecto, Nextcloud solo acepta conexiones desde el dominio o IP configurada 
 ```bash
 # Agregar IP de Tailscale como dominio confiable
 docker exec -it nextcloud php occ config:system:set trusted_domains 1 --value=192.168.50.100:8080
-docker exec -it nextcloud php occ config:system:set trusted_domains 2 --value=100.127.183.41
-docker exec -it nextcloud php occ config:system:set trusted_domains 3 --value=100.127.183.41:8080
+docker exec -it nextcloud php occ config:system:set trusted_domains 2 --value=100.91.206.50
+docker exec -it nextcloud php occ config:system:set trusted_domains 3 --value=100.91.206.50:8080
 
 # Reiniciar el contenedor para aplicar los cambios
 docker restart nextcloud
@@ -99,14 +99,14 @@ docker restart nextcloud
 |--------|--------------------------|
 | 0      | localhost                |
 | 1      | 192.168.50.100:8080      |
-| 2      | 100.127.183.41           |
-| 3      | 100.127.183.41:8080      |
+| 2      | 100.91.206.50           |
+| 3      | 100.91.206.50:8080      |
 
 ---
 
 ## 7. Primer acceso
 
-1. Abrir el navegador y navegar a `http://100.127.183.41:8080`.
+1. Abrir el navegador y navegar a `http://100.91.206.50:8080`.
 2. Iniciar sesión con:
    - Usuario: `admin`
    - Contraseña: `admin1234`
@@ -118,7 +118,7 @@ docker restart nextcloud
 
 - **iOS:** Buscar "Nextcloud" en App Store.
 - **Android:** Buscar "Nextcloud" en Play Store.
-- Configurar la URL del servidor: `http://100.127.183.41:8080`
+- Configurar la URL del servidor: `http://100.91.206.50:8080`
 - Iniciar sesión con el usuario `admin`.
 
 ---

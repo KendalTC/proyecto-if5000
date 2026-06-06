@@ -5,7 +5,7 @@
 | Puerto SSH    | 22                             |
 | Usuario       | adminuser                      |
 | IP local      | 192.168.50.100                 |
-| IP Tailscale  | 100.127.183.41                 |
+| IP Tailscale  | 100.91.206.50                 |
 
 ---
 
@@ -17,7 +17,7 @@ El servidor OpenSSH se instala durante la instalación de Ubuntu Server (paso "I
 # Verificar estado del servicio
 systemctl status ssh
 
-# Habilitar inicio automático
+# Habilitar SSH para que inicie automáticamente al arrancar
 sudo systemctl enable ssh
 
 # Iniciar el servicio (si está detenido)
@@ -36,8 +36,16 @@ sudo systemctl restart ssh
 ssh adminuser@192.168.50.100
 
 # Conexión vía Tailscale (desde cualquier red)
-ssh adminuser@100.127.183.41
+ssh adminuser@100.91.206.50
 ```
+
+> **Nota:** Si se reinstala el servidor, SSH mostrará un warning de seguridad 
+> porque la clave del host cambió. Para resolverlo:
+> ```powershell
+> ssh-keygen -R 192.168.50.100
+> ssh-keygen -R 100.91.206.50
+> ```
+> Luego reconectarse normalmente.
 
 Al conectarse por primera vez se solicita aceptar la clave del host:
 
@@ -58,7 +66,7 @@ Ingresar `yes` para continuar.
 ssh adminuser@192.168.50.100
 
 # Via Tailscale
-ssh adminuser@100.127.183.41
+ssh adminuser@100.91.206.50
 ```
 
 ---
@@ -67,7 +75,7 @@ ssh adminuser@100.127.183.41
 
 - **iOS/Android:** Instalar la app **Termius** o similar.
 - Configurar un host con:
-  - Hostname: `100.127.183.41`
+  - Hostname: `100.91.206.50`
   - Username: `adminuser`
   - Password: (contraseña del servidor)
 - Requiere tener **Tailscale** instalado y activo en el celular.

@@ -6,7 +6,7 @@
 | Puerto DNS    | 53 TCP/UDP                             |
 | Puerto Web UI | 8053                                   |
 | URL local     | http://192.168.50.100:8053/admin       |
-| URL Tailscale | http://100.127.183.41:8053/admin       |
+| URL Tailscale | http://100.91.206.50:8053/admin       |
 
 ---
 
@@ -87,7 +87,7 @@ docker exec -it pihole pihole setpassword admin1234
 
 ## 6. Primer acceso al dashboard
 
-1. Abrir `http://100.127.183.41:8053/admin`.
+1. Abrir `http://100.91.206.50:8053/admin`.
 2. Iniciar sesión con la contraseña configurada (`admin1234`).
 3. El dashboard muestra en tiempo real:
    - Total de consultas DNS procesadas
@@ -108,22 +108,22 @@ Para que un dispositivo use Pi-hole como servidor DNS:
 Get-NetAdapter
 
 # Configurar DNS en el adaptador Wi-Fi
-Set-DnsClientServerAddress -InterfaceAlias "Wi-Fi" -ServerAddresses 100.127.183.41
+Set-DnsClientServerAddress -InterfaceAlias "Wi-Fi" -ServerAddresses 100.91.206.50
 ```
 
 **Mac/Linux:**
 
 ```bash
 # Cambiar el servidor DNS (temporal)
-sudo resolvectl dns <interfaz> 100.127.183.41
+sudo resolvectl dns <interfaz> 100.91.206.50
 ```
 
 **Celular (Android/iOS):**
 
 - Ir a configuración Wi-Fi → red activa → DNS manual.
-- Ingresar `100.127.183.41` como servidor DNS primario.
+- Ingresar `100.91.206.50` como servidor DNS primario.
 
-> El dispositivo cliente debe tener Tailscale activo para alcanzar la IP `100.127.183.41`.
+> El dispositivo cliente debe tener Tailscale activo para alcanzar la IP `100.91.206.50`.
 
 ---
 
