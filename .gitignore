@@ -1,0 +1,12 @@
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# Archivos de entorno con credenciales reales
+.env
+*.env
+
+# Archivos temporales
+*.tmp
+*.bak
