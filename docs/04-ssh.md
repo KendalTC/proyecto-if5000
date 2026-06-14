@@ -115,22 +115,56 @@ w
 
 ---
 
-## 7. Crear usuarios por integrante del grupo
+## 7. Usuarios individuales por integrante
 
-El proyecto requiere que cada integrante tenga su propio usuario en el servidor.
+El proyecto requiere que cada integrante tenga su propio usuario en el servidor
+con acceso administrativo independiente.
 
+### Crear usuario
 ```bash
-# Crear usuario
 sudo adduser nombre_integrante
+```
 
-# Agregar al grupo sudo (acceso administrativo)
+El comando solicita:
+- Contraseña del nuevo usuario
+- Datos opcionales (Full Name, Room Number, etc.) — presionar Enter para omitir
+- Confirmación con `Y`
+
+### Agregar al grupo sudo
+```bash
 sudo usermod -aG sudo nombre_integrante
+```
 
-# Verificar que el usuario fue creado
-id nombre_integrante
+### Usuarios creados en el servidor
 
-# Listar todos los usuarios del sistema
+| Usuario    | Grupo sudo | Acceso                         |
+|------------|-----------|--------------------------------|
+| adminuser  | ✅        | Usuario principal del sistema  |
+| kendall    | ✅        | Integrante del grupo           |
+| sebas      | ✅        | Integrante del grupo           |
+| mariangel  | ✅        | Integrante del grupo           |
+| alejandro  | ✅        | Integrante del grupo           |
+
+### Verificar usuarios creados
+```bash
 cat /etc/passwd | grep -v nologin | grep -v false
+```
+
+### Verificar grupos de un usuario
+```bash
+groups kendall
+groups sebas
+groups mariangel
+groups alejandro
+```
+
+### Conectarse con usuario propio
+Cada integrante puede conectarse con su propio usuario:
+```bash
+ssh kendall@100.91.206.50
+ssh sebas@100.91.206.50
+ssh mariangel@100.91.206.50
+ssh alejandro@100.91.206.50
 ```
 
 ---

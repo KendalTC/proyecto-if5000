@@ -13,12 +13,7 @@
 
 ## 1. Aplicación elegida
 
-**[POR DEFINIR]** — Candidatos considerados:
-- Django Dashboard (aplicación web personalizada)
-- Gitea (servidor Git propio)
-- Heimdall (panel de administración de servicios)
-- Homer (dashboard de servicios)
-- Vaultwarden (gestor de contraseñas compatible con Bitwarden)
+**[POR DEFINIR]**
 
 ---
 

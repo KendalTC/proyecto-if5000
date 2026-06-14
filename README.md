@@ -27,7 +27,8 @@ Clientes (PC / Celular con Tailscale)
          ├── Nextcloud     (puerto 8080) — Almacenamiento en la nube
          ├── Jellyfin      (puerto 8096) — Servidor multimedia
          ├── Portainer     (puerto 9000) — Administración de Docker
-         └── Pi-hole       (puerto 8053) — DNS y bloqueador de anuncios
+         ├── Pi-hole       (puerto 8053) — DNS y bloqueador de anuncios
+         └── Dashboard     (puerto 8001) — Panel de control del servidor
 ```
 
 ---
@@ -39,8 +40,9 @@ Clientes (PC / Celular con Tailscale)
 | Nextcloud  | 8080   | http://192.168.50.100:8080         | http://100.91.206.50:8080           |
 | Jellyfin   | 8096   | http://192.168.50.100:8096         | http://100.91.206.50:8096           |
 | Portainer  | 9000   | http://192.168.50.100:9000         | http://100.91.206.50:9000           |
-| Pi-hole    | 8053   | http://192.168.50.100:8053/admin   | http://100.91.206.50:8053/admin     |
-| SSH        | 22     | ssh adminuser@192.168.50.100       | ssh adminuser@100.91.206.50         |
+| Pi-hole          | 8053   | http://192.168.50.100:8053/admin   | http://100.91.206.50:8053/admin     |
+| Dashboard IF5000 | 8001   | http://192.168.50.100:8001         | http://100.91.206.50:8001           |
+| SSH              | 22     | ssh adminuser@192.168.50.100       | ssh adminuser@100.91.206.50         |
 
 ---
 
@@ -112,6 +114,9 @@ cd ~/jellyfin && docker compose up -d
 # Levantar Pi-hole
 cd ~/pihole && docker compose up -d
 
+# Levantar Dashboard
+cd ~/dashboard-if5000 && docker compose up -d
+
 # Verificar todos los contenedores
 docker ps
 ```
@@ -139,6 +144,7 @@ docker ps
 | 08 | [Jellyfin — Servidor multimedia](docs/08-jellyfin.md) | 8096 |
 | 09 | [Pi-hole — DNS y bloqueador de anuncios](docs/09-pihole.md) | 8053 |
 | 10 | [Tailscale — VPN](docs/10-tailscale.md) | — |
+| — | [Dashboard IF5000](docs/dashboard.md) | 8001 |
 
 ### Opcionales / En desarrollo
 
@@ -146,6 +152,7 @@ docker ps
 |---|-----------|--------|
 | 11 | [Aplicación adicional](docs/11-app-adicional.md) | ⏳ Pendiente |
 | 12 | [Monitoreo — Prometheus + Grafana](docs/12-monitoreo-opcional.md) | ⏳ Pendiente |
+| 13 | [Tabla de puertos del servidor](docs/13-puertos.md) | ✅ Completado |
 
 ### Evidencias visuales
 
@@ -163,6 +170,7 @@ proyecto-if5000/
 │   ├── nextcloud/docker-compose.yml
 │   ├── jellyfin/docker-compose.yml
 │   ├── pihole/docker-compose.yml
+│   ├── dashboard/docker-compose.yml
 │   └── monitoring/docker-compose.yml
 ├── config/
 │   └── netplan/
@@ -187,9 +195,9 @@ proyecto-if5000/
 
 ## Pendientes (checklist)
 
+- [x] Crear usuarios individuales por integrante del grupo en el servidor
 - [ ] Definir e implementar la aplicación adicional (`docs/11-app-adicional.md`)
 - [ ] Implementar el stack de monitoreo opcional (`docs/12-monitoreo-opcional.md`)
 - [ ] Agregar capturas de pantalla en todas las carpetas `screenshots/`
-- [ ] Crear usuarios individuales por integrante del grupo en el servidor
 - [ ] Verificar acceso desde celular vía Tailscale
 - [ ] Preparar demostración para la fecha de entrega (29 de junio)
