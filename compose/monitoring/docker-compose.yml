@@ -1,8 +1,7 @@
-version: '3.8'
-
 services:
   prometheus:
     image: prom/prometheus:latest
+    container_name: prometheus
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - prometheus-data:/prometheus
@@ -13,30 +12,32 @@ services:
 
   grafana:
     image: grafana/grafana:latest
+    container_name: grafana
     ports:
       - "3000:3000"
     volumes:
       - grafana-data:/var/lib/grafana
-      - ./provisioning/datasources:/etc/grafana/provisioning/datasources:ro
-      - ./provisioning/dashboards:/var/lib/grafana/dashboards:ro
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
     restart: unless-stopped
 
   node-exporter:
     image: prom/node-exporter:latest
-    network_mode: host
+    container_name: node-exporter
+    ports:
+      - "9100:9100"
     restart: unless-stopped
 
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:ro
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
     ports:
-      - "8080:8080"
+      - "8082:8080"
     restart: unless-stopped
 
 volumes:

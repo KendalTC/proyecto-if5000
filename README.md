@@ -24,25 +24,33 @@ Clientes (PC / Celular con Tailscale)
           (VirtualBox — Bridged Adapter)
              |
        Docker Engine
-         ├── Nextcloud     (puerto 8080) — Almacenamiento en la nube
-         ├── Jellyfin      (puerto 8096) — Servidor multimedia
-         ├── Portainer     (puerto 9000) — Administración de Docker
-         ├── Pi-hole       (puerto 8053) — DNS y bloqueador de anuncios
-         └── Dashboard     (puerto 8001) — Panel de control del servidor
+         ├── Nextcloud       (puerto 8080) — Almacenamiento en la nube
+         ├── Jellyfin        (puerto 8096) — Servidor multimedia
+         ├── Portainer       (puerto 9000) — Administración de Docker
+         ├── Pi-hole         (puerto 8053) — DNS y bloqueador de anuncios
+         ├── Dashboard       (puerto 8001) — Panel de control del servidor
+         ├── Prometheus      (puerto 9090) — Recolección de métricas
+         ├── Grafana         (puerto 3000) — Visualización de métricas
+         ├── Node Exporter   (puerto 9100) — Métricas del sistema
+         └── cAdvisor        (puerto 8082) — Métricas de contenedores
 ```
 
 ---
 
 ## Tabla de servicios
 
-| Servicio   | Puerto | URL Local                          | URL Tailscale                        |
-|------------|--------|------------------------------------|--------------------------------------|
-| Nextcloud  | 8080   | http://192.168.50.100:8080         | http://100.91.206.50:8080           |
-| Jellyfin   | 8096   | http://192.168.50.100:8096         | http://100.91.206.50:8096           |
-| Portainer  | 9000   | http://192.168.50.100:9000         | http://100.91.206.50:9000           |
-| Pi-hole          | 8053   | http://192.168.50.100:8053/admin   | http://100.91.206.50:8053/admin     |
-| Dashboard IF5000 | 8001   | http://192.168.50.100:8001         | http://100.91.206.50:8001           |
-| SSH              | 22     | ssh adminuser@192.168.50.100       | ssh adminuser@100.91.206.50         |
+| Servicio       | Puerto | URL Local                          | URL Tailscale                        |
+|----------------|--------|------------------------------------|--------------------------------------|
+| Nextcloud      | 8080   | http://192.168.50.100:8080         | http://100.91.206.50:8080           |
+| Jellyfin       | 8096   | http://192.168.50.100:8096         | http://100.91.206.50:8096           |
+| Portainer      | 9000   | http://192.168.50.100:9000         | http://100.91.206.50:9000           |
+| Pi-hole        | 8053   | http://192.168.50.100:8053/admin   | http://100.91.206.50:8053/admin     |
+| Dashboard IF5000 | 8001 | http://192.168.50.100:8001         | http://100.91.206.50:8001           |
+| Prometheus     | 9090   | http://192.168.50.100:9090         | http://100.91.206.50:9090           |
+| Grafana        | 3000   | http://192.168.50.100:3000         | http://100.91.206.50:3000           |
+| cAdvisor       | 8082   | http://192.168.50.100:8082         | http://100.91.206.50:8082           |
+| Node Exporter  | 9100   | (interno)                          | (interno)                           |
+| SSH            | 22     | ssh adminuser@192.168.50.100       | ssh adminuser@100.91.206.50         |
 
 ---
 
@@ -117,6 +125,9 @@ cd ~/pihole && docker compose up -d
 # Levantar Dashboard
 cd ~/dashboard-if5000 && docker compose up -d
 
+# Levantar stack de monitoreo
+cd ~/monitoring && docker compose up -d
+
 # Verificar todos los contenedores
 docker ps
 ```
@@ -151,7 +162,7 @@ docker ps
 | # | Documento | Estado |
 |---|-----------|--------|
 | 11 | [Aplicación adicional](docs/11-app-adicional.md) | ⏳ Pendiente |
-| 12 | [Monitoreo — Prometheus + Grafana](docs/12-monitoreo-opcional.md) | ⏳ Pendiente |
+| 12 | [Monitoreo — Prometheus + Grafana](docs/12-monitoreo-opcional.md) | ✅ Completado |
 | 13 | [Tabla de puertos del servidor](docs/13-puertos.md) | ✅ Completado |
 
 ### Evidencias visuales
@@ -197,7 +208,7 @@ proyecto-if5000/
 
 - [x] Crear usuarios individuales por integrante del grupo en el servidor
 - [ ] Definir e implementar la aplicación adicional (`docs/11-app-adicional.md`)
-- [ ] Implementar el stack de monitoreo opcional (`docs/12-monitoreo-opcional.md`)
+- [x] Implementar el stack de monitoreo opcional (`docs/12-monitoreo-opcional.md`)
 - [ ] Agregar capturas de pantalla en todas las carpetas `screenshots/`
 - [ ] Verificar acceso desde celular vía Tailscale
 - [ ] Preparar demostración para la fecha de entrega (29 de junio)

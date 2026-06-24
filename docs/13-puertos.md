@@ -9,4 +9,7 @@
 | 8080   | TCP       | Nextcloud        | Almacenamiento en la nube          |
 | 8096   | TCP       | Jellyfin         | Servidor multimedia                |
 | 9000   | TCP       | Portainer        | Administración de Docker           |
-| 19999  | TCP       | Netdata (opcional) | Monitoreo del sistema            |
+| 3000   | TCP       | Grafana          | Visualización de métricas          |
+| 8082   | TCP       | cAdvisor         | Métricas de contenedores Docker    |
+| 9090   | TCP       | Prometheus       | Recolección y almacenamiento de métricas |
+| 9100   | TCP       | Node Exporter    | Métricas del sistema operativo     |

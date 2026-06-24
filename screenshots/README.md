@@ -108,9 +108,9 @@ Convención de nombres: `##-descripcion-significativa.png`
 
 | Archivo | Estado |
 |---------|--------|
-| `40-grafana-dashboard.png` | ⏳ pendiente |
-| `41-prometheus-targets.png` | ⏳ pendiente |
-| `42-cadvisor-contenedores.png` | ⏳ pendiente |
+| `40-grafana-dashboard.png` | ✅ |
+| `41-prometheus-targets.png` | ✅ |
+| `42-cadvisor-contenedores.png` | ✅ |
 
 ## `app-adicional/`
 
