@@ -1,52 +1,33 @@
-> ⚠️ Esta sección está pendiente de completar.
+# 11 — Aplicación adicional (propuesta)
 
-# 11 — Aplicación Adicional
+Objetivo: Añadir una pequeña aplicación que demuestre integración con el servidor (API o servicio web) y aporte funcionalidad para la entrega.
 
-| Campo         | Valor              |
-|---------------|--------------------|
-| Servicio      | Por definir        |
-| Puerto        | Por definir        |
-| URL local     | Por definir        |
-| URL Tailscale | Por definir        |
+Propuesta rápida (Recomendado): Node.js + Express
 
----
+Requerimientos mínimos
+- Endpoints: GET / (status), GET /api/items, POST /api/items
+- Persistencia: JSON-file local o SQLite (sencillo para la entrega)
+- Contenerización: Dockerfile y docker-compose para desplegar en compose/app/
 
-## 1. Aplicación elegida
+Estructura sugerida
+- app/
+  - package.json
+  - src/index.js
+  - Dockerfile
+  - data/db.sqlite (opcional)
 
-**[POR DEFINIR]**
+Pasos para implementar
+1. Definir requisitos funcionales y endpoints (docs/11-app-adicional.md) — tarea: app-adicional/definir-requisitos
+2. Elegir stack (Node.js/Express recomendado) — tarea: app-adicional/elegir-stack
+3. Crear Dockerfile y docker-compose (compose/app/docker-compose.yml) — tarea: app-adicional/crear-compose
+4. Implementar prototipo mínimo (CRUD básico in-memory o SQLite) — tarea: app-adicional/implementar-prototipo
+5. Integrar documentación y ejemplos de curl en README — tarea: app-adicional/integrar-readme
 
----
+Notas de despliegue
+- Puerto sugerido: 8081 (externo) mapeado a 8080 interno.
+- Para pruebas locales: docker compose up -d en compose/app/
 
-## 2. Justificación de la elección
-
-**[COMPLETAR]** — Explicar por qué se eligió esta aplicación y qué valor aporta al proyecto.
-
----
-
-## 3. Instalación
-
-**[COMPLETAR]** — Incluir los comandos de instalación, el archivo `docker-compose.yml` si aplica, y cualquier dependencia necesaria.
-
-```bash
-# Comandos de instalación aquí
-```
-
----
-
-## 4. Configuración
-
-**[COMPLETAR]** — Detallar la configuración inicial, archivos de configuración relevantes y parámetros importantes.
-
----
-
-## 5. Demostración de uso
-
-**[COMPLETAR]** — Describir las funcionalidades que se demostrarán en la presentación y cómo acceder a la aplicación.
-
----
-
-## Capturas de pantalla
-
-![Pantalla principal de la aplicación adicional](../screenshots/app-adicional/app-adicional-main.png)
-
-![Demostración de uso de la aplicación](../screenshots/app-adicional/app-adicional-uso.png)
+Criterios de aceptación
+- Servicio inicia en contenedor y responde GET / con 200
+- Endpoints API funcionan según ejemplos en la documentación
+- README actualizado con pasos de despliegue y pruebas

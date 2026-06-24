@@ -1,0 +1,15 @@
+{
+  "annotations": {"list":[]},
+  "panels": [
+    {
+      "datasource": "Prometheus",
+      "type": "graph",
+      "title": "CPU usage (1m)",
+      "targets": [
+        {"expr": "sum(rate(node_cpu_seconds_total{mode!='idle'}[1m])) by (instance)", "format": "time_series"}
+      ]
+    }
+  ],
+  "title": "IF5000 - Host Metrics",
+  "schemaVersion": 16
+}
