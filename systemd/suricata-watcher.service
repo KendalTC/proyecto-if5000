@@ -1,0 +1,11 @@
+[Unit]
+Description=Suricata SOC Engine
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /home/mariangel/soc-alerting/scripts/suricata-watcher.sh
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target

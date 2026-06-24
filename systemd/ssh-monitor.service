@@ -1,0 +1,11 @@
+[Unit]
+Description=SSH SOC Monitor
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /home/mariangel/soc-alerting/scripts/soc-ssh-monitor.sh
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
