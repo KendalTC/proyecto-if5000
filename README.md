@@ -33,11 +33,18 @@ Clientes (PC / Celular con Tailscale)
          ├── Grafana         (puerto 3000) — Visualización de métricas
          ├── Node Exporter   (puerto 9100) — Métricas del sistema
          └── cAdvisor        (puerto 8082) — Métricas de contenedores
+             |
+       Servicios del SO (systemd — sin contenedor)
+         ├── Suricata IDS    — Detección de intrusiones de red → eve.json
+         ├── Fail2ban        — Bloqueo automático de IPs por fuerza bruta
+         └── SOC Alerting    — Scripts que leen logs y envían alertas a Discord
 ```
 
 ---
 
 ## Tabla de servicios
+
+### Servicios Docker
 
 | Servicio       | Puerto | URL Local                          | URL Tailscale                        |
 |----------------|--------|------------------------------------|--------------------------------------|
@@ -51,6 +58,16 @@ Clientes (PC / Celular con Tailscale)
 | cAdvisor       | 8082   | http://192.168.50.100:8082         | http://100.91.206.50:8082           |
 | Node Exporter  | 9100   | (interno)                          | (interno)                           |
 | SSH            | 22     | ssh adminuser@192.168.50.100       | ssh adminuser@100.91.206.50         |
+
+### Servicios del sistema (sin contenedor)
+
+| Servicio         | Tipo    | Estado   | Descripción |
+|------------------|---------|----------|-------------|
+| Suricata IDS     | systemd | activo   | Detección de intrusiones — genera alertas en `/var/log/suricata/eve.json` |
+| Fail2ban         | systemd | activo   | Bloqueo automático de IPs con fuerza bruta SSH |
+| suricata-watcher | systemd | activo   | Script SOC — alertas Suricata agregadas → Discord |
+| fail2ban-watcher | systemd | activo   | Script SOC — detección SCAN/Nmap en tiempo real → Discord |
+| ssh-monitor      | systemd | activo   | Script SOC — alertas de login SSH → Discord |
 
 ---
 
@@ -132,6 +149,30 @@ cd ~/monitoring && docker compose up -d
 docker ps
 ```
 
+### Verificar servicios de seguridad (systemd)
+
+Los servicios de Suricata, Fail2ban y el sistema SOC se inician automáticamente con el servidor. Para verificar su estado:
+
+```bash
+# Estado de los servicios de seguridad
+sudo systemctl status suricata
+sudo systemctl status fail2ban
+
+# Estado de los daemons SOC
+sudo systemctl status suricata-watcher
+sudo systemctl status fail2ban-watcher
+sudo systemctl status ssh-monitor
+
+# Ver alertas recientes de Suricata
+sudo tail -f /var/log/suricata/eve.json | jq 'select(.event_type=="alert")'
+
+# Ver bans activos de Fail2ban
+sudo fail2ban-client status sshd
+
+# Dashboard CLI de seguridad
+bash /home/mariangel/soc-alerting/scripts/soc-dashboard.sh
+```
+
 ---
 
 ## Documentación
@@ -157,6 +198,14 @@ docker ps
 | 10 | [Tailscale — VPN](docs/10-tailscale.md) | — |
 | — | [Dashboard IF5000](docs/dashboard.md) | 8001 |
 
+### Seguridad y SOC
+
+| # | Documento | Descripción |
+|---|-----------|-------------|
+| 14 | [Suricata IDS](docs/14-suricata.md) | Detección de intrusiones de red |
+| 15 | [Fail2ban](docs/15-fail2ban.md) | Bloqueo automático de IPs por fuerza bruta |
+| 16 | [SOC — Alertas a Discord](docs/16-soc-discord.md) | Sistema de alertas en tiempo real con scripts y systemd |
+
 ### Opcionales / En desarrollo
 
 | # | Documento | Estado |
@@ -177,12 +226,43 @@ docker ps
 proyecto-if5000/
 ├── README.md                    ← Este archivo
 ├── docs/                        ← Documentación completa (ver tabla anterior)
+│   ├── 01-virtualbox.md
+│   ├── 02-ubuntu-server.md
+│   ├── 03-red-netplan.md
+│   ├── 04-ssh.md
+│   ├── 05-docker.md
+│   ├── 06-portainer.md
+│   ├── 07-nextcloud.md
+│   ├── 08-jellyfin.md
+│   ├── 09-pihole.md
+│   ├── 10-tailscale.md
+│   ├── 11-app-adicional.md
+│   ├── 12-monitoreo-opcional.md
+│   ├── 13-puertos.md
+│   ├── 14-suricata.md           ← Suricata IDS
+│   ├── 15-fail2ban.md           ← Fail2ban
+│   └── 16-soc-discord.md       ← Sistema SOC + alertas Discord
+├── scripts/                     ← Scripts SOC (se despliegan en el servidor)
+│   ├── suricata-watcher.sh      ← Alertas Suricata agregadas → Discord
+│   ├── soc-engine.sh            ← Monitor SSH (logins/logouts) → Discord
+│   ├── soc-v2.sh                ← Motor de correlación Suricata+Fail2ban → Discord
+│   ├── fail2ban-watcher.sh      ← Detección SCAN/Nmap en tiempo real → Discord
+│   ├── fail2ban-realtime.sh     ← Bans de Fail2ban en tiempo real → Discord
+│   ├── fail2ban-alerta.sh       ← Test manual de alerta simulada
+│   ├── soc-dashboard.sh         ← Dashboard CLI (IPs baneadas, uptime)
+│   └── test-discord.sh          ← Test de conectividad del webhook
+├── systemd/                     ← Archivos de servicio systemd para los daemons SOC
+│   ├── suricata-watcher.service
+│   ├── fail2ban-watcher.service
+│   └── ssh-monitor.service
 ├── compose/
 │   ├── nextcloud/docker-compose.yml
 │   ├── jellyfin/docker-compose.yml
 │   ├── pihole/docker-compose.yml
 │   ├── dashboard/docker-compose.yml
-│   └── monitoring/docker-compose.yml
+│   └── monitoring/
+│       ├── docker-compose.yml
+│       └── prometheus.yml
 ├── config/
 │   └── netplan/
 │       ├── 00-installer-config-static.yaml
@@ -199,6 +279,7 @@ proyecto-if5000/
     ├── pihole/
     ├── tailscale/
     ├── monitoreo/
+    ├── soc/                     ← Capturas del sistema SOC y alertas Discord
     └── app-adicional/
 ```
 
@@ -209,6 +290,10 @@ proyecto-if5000/
 - [x] Crear usuarios individuales por integrante del grupo en el servidor
 - [ ] Definir e implementar la aplicación adicional (`docs/11-app-adicional.md`)
 - [x] Implementar el stack de monitoreo opcional (`docs/12-monitoreo-opcional.md`)
+- [x] Instalar y configurar Suricata IDS (`docs/14-suricata.md`)
+- [x] Instalar y configurar Fail2ban (`docs/15-fail2ban.md`)
+- [x] Implementar sistema SOC con alertas a Discord (`docs/16-soc-discord.md`)
 - [ ] Agregar capturas de pantalla en todas las carpetas `screenshots/`
+- [ ] Agregar capturas del sistema SOC en `screenshots/soc/`
 - [ ] Verificar acceso desde celular vía Tailscale
 - [ ] Preparar demostración para la fecha de entrega (29 de junio)
