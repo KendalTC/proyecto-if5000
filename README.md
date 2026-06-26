@@ -285,15 +285,27 @@ proyecto-if5000/
 
 ---
 
-## Pendientes (checklist)
+## Pendientes para la entrega — 29 de junio de 2026
 
+### Infraestructura y servicios
 - [x] Crear usuarios individuales por integrante del grupo en el servidor
-- [ ] Definir e implementar la aplicación adicional (`docs/11-app-adicional.md`)
-- [x] Implementar el stack de monitoreo opcional (`docs/12-monitoreo-opcional.md`)
+- [x] Implementar el stack de monitoreo opcional — Prometheus + Grafana (`docs/12-monitoreo-opcional.md`)
 - [x] Instalar y configurar Suricata IDS (`docs/14-suricata.md`)
 - [x] Instalar y configurar Fail2ban (`docs/15-fail2ban.md`)
 - [x] Implementar sistema SOC con alertas a Discord (`docs/16-soc-discord.md`)
-- [ ] Agregar capturas de pantalla en todas las carpetas `screenshots/`
-- [ ] Agregar capturas del sistema SOC en `screenshots/soc/`
-- [ ] Verificar acceso desde celular vía Tailscale
-- [ ] Preparar demostración para la fecha de entrega (29 de junio)
+- [ ] Definir e implementar la aplicación adicional (`docs/11-app-adicional.md`)
+
+### Demostraciones pendientes
+- [ ] **Pi-hole** — Configurar DNS en un dispositivo (celular o PC) apuntando a `192.168.50.100` y demostrar bloqueo de anuncios en tiempo real
+- [ ] **Jellyfin** — Subir archivos multimedia al servidor para demostrar reproducción de video/audio
+- [ ] **Nextcloud** — Subir archivos y demostrar sincronización y compartir desde un segundo dispositivo
+- [ ] **Tailscale** — Verificar y fotografiar acceso a los servicios desde celular vía VPN
+
+### Documentación
+- [ ] Completar y exportar el archivo Word (`DOCUMENTACION.docx`) con secciones de monitoreo y SOC
+- [ ] Agregar capturas faltantes en `screenshots/` (app-adicional, tailscale-admin-panel)
+
+### Presentación y entrega
+- [ ] Crear presentación (diapositivas) con arquitectura, servicios y demostración del proyecto
+- [ ] Planear el orden de la demostración en vivo para la exposición del 29 de junio
+- [ ] Ensayar la demostración completa con todos los integrantes
