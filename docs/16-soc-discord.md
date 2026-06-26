@@ -263,13 +263,33 @@ bash /home/mariangel/soc-alerting/scripts/soc-dashboard.sh
 
 ## Capturas de pantalla
 
-![Alerta de Suricata recibida en Discord](../screenshots/soc/40-soc-alerta-suricata.png)
+**Prerrequisitos:**
 
-![Alerta de login SSH recibida en Discord](../screenshots/soc/41-soc-alerta-ssh.png)
+![ip a — interfaces de red del servidor (enp0s3, tailscale0)](../screenshots/soc/01-ip-a-interfaces-red.png)
 
-![Alerta de Fail2ban ban en Discord](../screenshots/soc/42-soc-alerta-fail2ban.png)
+![jq --version — dependencia jq instalada](../screenshots/soc/02-jq-version.png)
 
-![Estado de los servicios systemd SOC](../screenshots/soc/43-soc-systemd-status.png)
+**Estructura en el servidor:**
+
+![Directorios del SOC: alertas/ y soc-alerting/](../screenshots/soc/09-soc-directorios-servidor.png)
+
+![ls -l ~/alertas — scripts con permisos de ejecución](../screenshots/soc/10-soc-scripts-permisos.png)
+
+**Configuración de Discord:**
+
+![Canal #alertas-servidor creado en Discord](../screenshots/soc/30-discord-canal-alertas-creado.png)
+
+![Discord — sección Integraciones → Webhooks](../screenshots/soc/31-discord-integraciones-webhooks.png)
+
+![Webhook "SOC Monitoring System" creado y apuntando a #alertas-server](../screenshots/soc/32-discord-webhook-soc.png)
+
+**Sistema funcionando:**
+
+![Suricata activo — systemctl status suricata](../screenshots/soc/20-suricata-status-activo.png)
+
+![Fail2ban con IP baneada — fail2ban-client status sshd](../screenshots/soc/22-fail2ban-ip-baneada.png)
+
+![Alertas IDS en tiempo real — tail -f /var/log/suricata/fast.log](../screenshots/soc/41-suricata-alertas-fast-log.png)
 
 ---
 

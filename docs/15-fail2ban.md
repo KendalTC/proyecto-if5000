@@ -165,6 +165,22 @@ Ver documentación completa del sistema SOC: [16-soc-discord.md](16-soc-discord.
 
 ---
 
+## Capturas de pantalla
+
+**Instalación y configuración:**
+
+![fail2ban-client -V — versión 1.0.2 instalada](../screenshots/soc/07-fail2ban-version.png)
+
+![Configuración del jail [suricata] en jail.local](../screenshots/soc/08-fail2ban-jail-suricata-config.png)
+
+**Verificación en funcionamiento:**
+
+![fail2ban-client status y status sshd — jail activo](../screenshots/soc/21-fail2ban-status-sshd.png)
+
+![fail2ban-client status sshd — IP baneada activa](../screenshots/soc/22-fail2ban-ip-baneada.png)
+
+---
+
 ## Fuentes
 
 - Fail2ban Documentation: https://github.com/fail2ban/fail2ban

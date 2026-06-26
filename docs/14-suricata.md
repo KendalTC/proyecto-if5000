@@ -152,6 +152,28 @@ Ver documentación completa del sistema SOC: [16-soc-discord.md](16-soc-discord.
 
 ---
 
+## Capturas de pantalla
+
+**Instalación y configuración:**
+
+![Suricata 7.0.3 — verificación de versión instalada](../screenshots/soc/03-suricata-version.png)
+
+![Configuración de interfaz enp0s3 en suricata.yaml](../screenshots/soc/04-suricata-config-interfaz-enp0s3.png)
+
+![suricata-update list-sources — fuentes de reglas disponibles (Emerging Threats)](../screenshots/soc/05-suricata-update-fuentes-reglas.png)
+
+![50808 reglas cargadas exitosamente en Suricata](../screenshots/soc/06-suricata-reglas-cargadas.png)
+
+**Verificación en funcionamiento:**
+
+![systemctl status suricata — servicio activo (running)](../screenshots/soc/20-suricata-status-activo.png)
+
+![tail -f /var/log/suricata/fast.log — alertas IDS en tiempo real](../screenshots/soc/41-suricata-alertas-fast-log.png)
+
+![tail -f /var/log/suricata/eve.json — eventos en formato JSON](../screenshots/soc/40-suricata-eve-json-eventos.png)
+
+---
+
 ## Fuentes
 
 - Suricata Documentation: https://docs.suricata.io
