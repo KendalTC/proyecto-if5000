@@ -189,7 +189,17 @@ Todos deben aparecer en estado **UP**:
 
 ## Capturas de pantalla
 
+**Configuración de Grafana:**
+
+![Pantalla de inicio de Grafana tras el primer login](../screenshots/monitoreo/39-grafana-home.png)
+
+![Conexión con Prometheus verificada — "Successfully queried the Prometheus API"](../screenshots/monitoreo/43-grafana-prometheus-datasource-ok.png)
+
+**Dashboards:**
+
 ![Dashboard de Grafana con métricas de CPU y RAM del servidor](../screenshots/monitoreo/40-grafana-dashboard.png)
+
+![Dashboard Node Exporter Full importado en Grafana](../screenshots/monitoreo/44-grafana-nodeexporter-full.png)
 
 ![Targets de Prometheus todos en estado UP](../screenshots/monitoreo/41-prometheus-targets.png)
 
