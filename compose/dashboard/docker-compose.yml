@@ -6,4 +6,6 @@ services:
       - "8001:8000"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - /var/log/fail2ban.log:/var/log/fail2ban.log:ro
+      - /var/log/suricata/eve.json:/var/log/suricata/eve.json:ro
     restart: always
