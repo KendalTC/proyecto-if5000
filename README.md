@@ -210,7 +210,7 @@ bash /home/mariangel/soc-alerting/scripts/soc-dashboard.sh
 
 | # | Documento | Estado |
 |---|-----------|--------|
-| 11 | [Aplicación adicional](docs/11-app-adicional.md) | ⏳ Pendiente |
+| 11 | [Aplicación adicional — Dashboard IF5000](docs/11-app-adicional.md) | ✅ Completado |
 | 12 | [Monitoreo — Prometheus + Grafana](docs/12-monitoreo-opcional.md) | ✅ Completado |
 | 13 | [Tabla de puertos del servidor](docs/13-puertos.md) | ✅ Completado |
 
@@ -280,7 +280,7 @@ proyecto-if5000/
     ├── tailscale/
     ├── monitoreo/
     ├── soc/                     ← Capturas del sistema SOC y alertas Discord
-    └── app-adicional/
+    └── dashboard/               ← Capturas de la aplicación adicional Dashboard IF5000
 ```
 
 ---
@@ -293,7 +293,7 @@ proyecto-if5000/
 - [x] Instalar y configurar Suricata IDS (`docs/14-suricata.md`)
 - [x] Instalar y configurar Fail2ban (`docs/15-fail2ban.md`)
 - [x] Implementar sistema SOC con alertas a Discord (`docs/16-soc-discord.md`)
-- [ ] Definir e implementar la aplicación adicional (`docs/11-app-adicional.md`)
+- [x] Definir e implementar la aplicación adicional — Dashboard IF5000 (`docs/11-app-adicional.md`)
 
 ### Demostraciones pendientes
 - [ ] **Pi-hole** — Configurar DNS en un dispositivo (celular o PC) apuntando a `192.168.50.100` y demostrar bloqueo de anuncios en tiempo real
@@ -303,7 +303,7 @@ proyecto-if5000/
 
 ### Documentación
 - [ ] Completar y exportar el archivo Word (`DOCUMENTACION.docx`) con secciones de monitoreo y SOC
-- [ ] Agregar capturas faltantes en `screenshots/` (app-adicional, tailscale-admin-panel)
+- [ ] Agregar capturas faltantes en `screenshots/` (tailscale-admin-panel)
 
 ### Presentación y entrega
 - [ ] Crear presentación (diapositivas) con arquitectura, servicios y demostración del proyecto

@@ -112,12 +112,14 @@ Convención de nombres: `##-descripcion-significativa.png`
 | `41-prometheus-targets.png` | ✅ |
 | `42-cadvisor-contenedores.png` | ✅ |
 
-## `app-adicional/`
+## `dashboard/`
 
 | Archivo | Estado |
 |---------|--------|
-| `40-app-adicional-main.png` | ⏳ pendiente |
-| `41-app-adicional-uso.png` | ⏳ pendiente |
+| `01-dashboard-docker-compose-yml.png` | ✅ |
+| `02-dashboard-docker-compose-up-build.png` | ✅ |
+| `20-dashboard-panel-servicios.png` | ✅ |
+| `21-dashboard-panel-completo.png` | ✅ |
 
 ---
 

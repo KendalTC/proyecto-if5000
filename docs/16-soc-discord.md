@@ -205,12 +205,9 @@ sudo systemctl enable --now fail2ban-watcher
 sudo systemctl enable --now ssh-monitor
 ```
 
-> **Nota:** El archivo `ssh-monitor.service` apunta al script `soc-engine.sh` 
-> (renombrado como `soc-ssh-monitor.sh` en el servicio). Al copiar, renombrar:
-> ```bash
-> cp /home/mariangel/soc-alerting/scripts/soc-engine.sh \
->    /home/mariangel/soc-alerting/scripts/soc-ssh-monitor.sh
-> ```
+> **Nota:** El servicio `ssh-monitor.service` ejecuta directamente el script
+> `/home/mariangel/soc-alerting/scripts/soc-engine.sh`, que es el monitor
+> encargado de procesar eventos de login SSH.
 
 ### 4.6 Verificar que los servicios están activos
 
