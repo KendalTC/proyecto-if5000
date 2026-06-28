@@ -1,0 +1,11 @@
+[Unit]
+Description=Fail2Ban SOC Engine
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /home/mariangel/soc-alerting/scripts/fail2ban-watcher.sh
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target

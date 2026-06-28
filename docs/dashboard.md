@@ -169,9 +169,17 @@ dashboard-if5000/
 
 ## Capturas de pantalla
 
-![Panel principal del dashboard con servicios y métricas](../screenshots/dashboard/dashboard-main.png)
+**Configuración en el servidor:**
 
-![Tabla de contenedores Docker en el dashboard](../screenshots/dashboard/dashboard-contenedores.png)
+![docker-compose.yml con volúmenes para Docker socket, Fail2ban y Suricata](../screenshots/dashboard/01-dashboard-docker-compose-yml.png)
+
+![Construcción y arranque del contenedor con docker compose up --build](../screenshots/dashboard/02-dashboard-docker-compose-up-build.png)
+
+**Dashboard funcionando:**
+
+![Dashboard versión inicial — servicios y métricas del servidor](../screenshots/dashboard/20-dashboard-panel-servicios.png)
+
+![Dashboard completo — 7 servicios, métricas, contenedores y sección SOC](../screenshots/dashboard/21-dashboard-panel-completo.png)
 
 ---
 

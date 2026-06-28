@@ -1,31 +1,217 @@
-# 12 — Monitoreo (Prometheus + Grafana) — Opcional
+# 12 — Monitoreo del Sistema (Opcional — +15 pts)
 
-Resumen
-Esta guía describe cómo desplegar un stack de monitoreo ligero con Prometheus, Grafana, node_exporter y cAdvisor para recolectar métricas del host y de contenedores.
+| Herramienta   | Puerto | URL |
+|---------------|--------|-----|
+| Prometheus    | 9090   | http://100.91.206.50:9090 |
+| Grafana       | 3000   | http://100.91.206.50:3000 |
+| cAdvisor      | 8082   | http://100.91.206.50:8082 |
+| Node Exporter | 9100   | (interno, sin UI web) |
 
-Contenido
-- Archivos: compose/monitoring/docker-compose.yml, compose/monitoring/prometheus.yml
+---
 
-Despliegue rápido
-1. Copiar compose/monitoring/* en el servidor (por ejemplo, ~/monitoring)
-2. Ejecutar: docker compose up -d
-3. Abrir Grafana: http://<IP>:3000 (usuario: admin / contraseña: admin)
-4. Abrir Prometheus: http://<IP>:9090
+## 1. ¿Qué es el stack de monitoreo?
 
-Notas de configuración
-- node_exporter: para métricas del host, ejecutar con network_mode: host o instalar node_exporter directamente en el host.
-- cAdvisor: expone métricas de contenedores en :8080; Prometheus las scrapea como "cadvisor" target.
-- Si Docker no dispone de host.docker.internal, reemplazar targets en prometheus.yml por la IP del host.
+El stack de monitoreo implementado utiliza cuatro herramientas que trabajan en conjunto para brindar visibilidad en tiempo real del servidor y los contenedores Docker:
 
-Provisionamiento de Grafana
-- Se puede provisionar datasource y dashboards mediante archivos en ./provisioning.
-- Alternativa rápida: iniciar sesión (admin/admin) y añadir Prometheus como datasource apuntando a http://prometheus:9090
-- Importar dashboards: official Node Exporter / cAdvisor dashboards (JSON) o crear paneles básicos: CPU, memoria, uso de disco y uso de contenedores.
+```
+Servidor Linux
+      ↓
+node-exporter     ← recolecta métricas del SO (CPU, RAM, disco, red)
+cadvisor          ← recolecta métricas de los contenedores Docker
+      ↓
+Prometheus        ← recoge y almacena todas las métricas cada 15 segundos
+      ↓
+Grafana           ← visualiza las métricas en dashboards interactivos
+```
 
-Criterios de aceptación
-- Prometheus scraping funcionando (ver Status -> Targets)
-- Grafana puede consultar Prometheus y mostrar al menos un panel con métricas de CPU o memoria
+| Herramienta | Función |
+|-------------|---------|
+| **Prometheus** | Motor central — recolecta y almacena métricas en series de tiempo |
+| **Grafana** | Visualización — dashboards interactivos con gráficas y gauges |
+| **Node Exporter** | Exporta métricas del sistema operativo (CPU, RAM, disco, red) |
+| **cAdvisor** | Exporta métricas de cada contenedor Docker por separado |
 
-Siguientes pasos (mejoras)
-- Añadir alertmanager y reglas de alerta
-- Provisionar dashboards de ejemplo en repo (docs + provisioning)
+---
+
+## 2. Directorio del servicio
+
+```bash
+mkdir -p ~/monitoring/provisioning/datasources
+mkdir -p ~/monitoring/provisioning/dashboards
+cd ~/monitoring
+```
+
+---
+
+## 3. Archivo `prometheus.yml`
+
+```yaml
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files: []
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'cadvisor'
+    static_configs:
+      - targets: ['cadvisor:8080']
+
+  - job_name: 'node_exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+```
+
+> **Nota:** node-exporter NO usa `network_mode: host` — corre como contenedor normal
+> con puerto `9100` expuesto para que Prometheus pueda alcanzarlo por nombre de contenedor.
+
+---
+
+## 4. Archivo `docker-compose.yml`
+
+```yaml
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    command: --config.file=/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    restart: unless-stopped
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    ports:
+      - "9100:9100"
+    restart: unless-stopped
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    ports:
+      - "8082:8080"
+    restart: unless-stopped
+
+volumes:
+  grafana-data: {}
+  prometheus-data: {}
+```
+
+> **Nota:** cAdvisor usa el puerto `8082` (externo) para evitar conflicto con
+> Nextcloud que ya usa el `8080`.
+
+---
+
+## 5. Levantar el stack
+
+```bash
+cd ~/monitoring
+docker compose up -d
+```
+
+Verificar que todos los contenedores están corriendo:
+
+```bash
+docker ps | grep -E "prometheus|grafana|cadvisor|node-exporter"
+```
+
+---
+
+## 6. Configurar Grafana
+
+1. Abrir `http://100.91.206.50:3000`
+2. Iniciar sesión: usuario `admin`, contraseña `admin`
+3. Cambiar contraseña a `admin1234`
+4. Ir a **Connections** → **Data Sources** → **Add data source**
+5. Seleccionar **Prometheus**
+6. URL: `http://prometheus:9090`
+7. Clic en **Save & Test** — debe aparecer mensaje verde
+
+---
+
+## 7. Importar dashboards
+
+### Dashboard de Node Exporter (métricas del servidor)
+
+1. **Dashboards** → **New** → **Import**
+2. Descargar JSON desde: https://grafana.com/grafana/dashboards/1860
+3. Subir el archivo JSON
+4. Seleccionar Prometheus como datasource
+5. Clic en **Import**
+
+### Dashboard de cAdvisor (métricas de contenedores)
+
+1. **Dashboards** → **New** → **Import**
+2. Descargar JSON desde: https://grafana.com/grafana/dashboards/14282
+3. Subir el archivo JSON
+4. Seleccionar Prometheus como datasource
+5. Clic en **Import**
+
+> **Nota:** La importación por ID directo puede fallar si Grafana no tiene
+> acceso a internet. En ese caso descargar el JSON manualmente y subirlo.
+
+---
+
+## 8. Verificar Prometheus targets
+
+Abrir `http://100.91.206.50:9090` → **Status** → **Targets**
+
+Todos deben aparecer en estado **UP**:
+- prometheus — UP
+- cadvisor — UP
+- node_exporter — UP
+
+---
+
+## Capturas de pantalla
+
+**Configuración de Grafana:**
+
+![Pantalla de inicio de Grafana tras el primer login](../screenshots/monitoreo/39-grafana-home.png)
+
+![Conexión con Prometheus verificada — "Successfully queried the Prometheus API"](../screenshots/monitoreo/43-grafana-prometheus-datasource-ok.png)
+
+**Dashboards:**
+
+![Dashboard de Grafana con métricas de CPU y RAM del servidor](../screenshots/monitoreo/40-grafana-dashboard.png)
+
+![Dashboard Node Exporter Full importado en Grafana](../screenshots/monitoreo/44-grafana-nodeexporter-full.png)
+
+![Targets de Prometheus todos en estado UP](../screenshots/monitoreo/41-prometheus-targets.png)
+
+![Dashboard de cAdvisor con métricas por contenedor](../screenshots/monitoreo/42-cadvisor-contenedores.png)
+
+---
+
+## Fuentes
+
+- Prometheus Documentation: https://prometheus.io/docs
+- Grafana Documentation: https://grafana.com/docs
+- Node Exporter: https://github.com/prometheus/node_exporter
+- cAdvisor: https://github.com/google/cadvisor
+- Dashboard Node Exporter Full: https://grafana.com/grafana/dashboards/1860
+- Dashboard cAdvisor: https://grafana.com/grafana/dashboards/14282
