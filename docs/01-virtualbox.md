@@ -6,7 +6,7 @@
 | SO invitado    | Ubuntu Server 24.04.4 LTS             |
 | Red            | Bridged Adapter (MediaTek Wi-Fi 6 MT7921) |
 | IP del servidor | 192.168.50.100                        |
-| IP Tailscale   | 100.127.183.41                         |
+| IP Tailscale   | 100.91.206.50                         |
 
 ---
 

@@ -296,14 +296,14 @@ proyecto-if5000/
 - [x] Definir e implementar la aplicación adicional — Dashboard IF5000 (`docs/11-app-adicional.md`)
 
 ### Demostraciones pendientes
-- [ ] **Pi-hole** — Configurar DNS en un dispositivo (celular o PC) apuntando a `192.168.50.100` y demostrar bloqueo de anuncios en tiempo real
-- [ ] **Jellyfin** — Subir archivos multimedia al servidor para demostrar reproducción de video/audio
-- [ ] **Nextcloud** — Subir archivos y demostrar sincronización y compartir desde un segundo dispositivo
-- [ ] **Tailscale** — Verificar y fotografiar acceso a los servicios desde celular vía VPN
+- [x] **Pi-hole** — Configurar DNS/acceso desde cliente móvil y demostrar el panel de consultas
+- [x] **Jellyfin** — Biblioteca multimedia cargada y verificada desde cliente móvil
+- [x] **Nextcloud** — Subida, compartición y acceso desde cliente móvil verificados
+- [ ] **Tailscale** — Capturas finales pendientes desde el tailnet de `tckendall7@gmail.com`
 
 ### Documentación
 - [ ] Completar y exportar el archivo Word (`DOCUMENTACION.docx`) con secciones de monitoreo y SOC
-- [ ] Agregar capturas faltantes en `screenshots/` (tailscale-admin-panel)
+- [ ] Agregar capturas faltantes de Tailscale (`tailscale-admin-panel`, SSH por Tailscale y SSH desde otra red)
 
 ### Presentación y entrega
 - [ ] Crear presentación (diapositivas) con arquitectura, servicios y demostración del proyecto

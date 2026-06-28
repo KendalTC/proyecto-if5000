@@ -6,7 +6,7 @@
 | IP estática    | 192.168.50.100/24  |
 | Gateway        | 192.168.50.1       |
 | DNS            | 8.8.8.8            |
-| IP Tailscale   | 100.127.183.41     |
+| IP Tailscale   | 100.91.206.50      |
 
 ---
 
@@ -83,7 +83,7 @@ network:
 
 El archivo de referencia se encuentra en: `config/netplan/00-installer-config-dhcp.yaml`
 
-> **Nota:** Con DHCP la IP del servidor puede cambiar. Para el acceso remoto desde fuera de la red local, Tailscale mantiene siempre la misma IP (`100.127.183.41`) independientemente de cuál sea la IP local.
+> **Nota:** Con DHCP la IP del servidor puede cambiar. Para el acceso remoto desde fuera de la red local, Tailscale mantiene siempre la misma IP (`100.91.206.50`) independientemente de cuál sea la IP local.
 
 ---
 

@@ -5,7 +5,7 @@
 | SO             | Ubuntu Server 24.04.4 LTS |
 | Hostname       | servidor-if5000          |
 | Usuario admin  | adminuser                |
-| IP Tailscale   | 100.127.183.41           |
+| IP Tailscale   | 100.91.206.50           |
 
 ---
 

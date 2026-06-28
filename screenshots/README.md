@@ -30,8 +30,8 @@ Convención de nombres: `##-descripcion-significativa.png`
 | `06-instalador-instalando.png` | ✅ |
 | `07-instalador-ip-estatica.png` | ✅ |
 | `20-ubuntu-apt-update.png` | ✅ |
-| `21-ping-internet.png` | ⏳ pendiente |
-| `22-ping-dns.png` | ⏳ pendiente |
+| `21-ping-internet.png` | ✅ |
+| `22-ping-dns.png` | ✅ |
 
 ## `ssh/`
 
@@ -58,8 +58,8 @@ Convención de nombres: `##-descripcion-significativa.png`
 | `01-portainer-docker-ps.png` | ✅ |
 | `20-portainer-home.png` | ✅ |
 | `21-portainer-contenedores.png` | ✅ |
-| `22-portainer-logs.png` | ⏳ pendiente |
-| `23-portainer-stats.png` | ⏳ pendiente |
+| `22-portainer-logs.png` | ✅ |
+| `23-portainer-stats.png` | ✅ |
 
 ## `nextcloud/`
 
@@ -71,7 +71,7 @@ Convención de nombres: `##-descripcion-significativa.png`
 | `21-nextcloud-panel.png` | ✅ |
 | `22-nextcloud-subida-archivo.png` | ✅ |
 | `23-nextcloud-compartir.png` | ✅ |
-| `24-nextcloud-celular.png` | ⏳ pendiente |
+| `24-nextcloud-celular.png` | ✅ |
 
 ## `jellyfin/`
 
@@ -82,7 +82,7 @@ Convención de nombres: `##-descripcion-significativa.png`
 | `03-jellyfin-biblioteca.png` | ✅ |
 | `20-jellyfin-panel.png` | ✅ |
 | `21-jellyfin-reproduccion.png` | ✅ |
-| `22-jellyfin-celular.png` | ⏳ pendiente |
+| `22-jellyfin-celular.png` | ✅ |
 
 ## `pihole/`
 
@@ -92,7 +92,7 @@ Convención de nombres: `##-descripcion-significativa.png`
 | `20-pihole-dashboard.png` | ✅ |
 | `21-pihole-blocklist.png` | ✅ |
 | `22-pihole-grafico-consultas.png` | ✅ |
-| `23-pihole-cliente-dns.png` | ⏳ pendiente |
+| `23-pihole-cliente-dns.png` | ✅ |
 
 ## `tailscale/`
 
@@ -126,5 +126,5 @@ Convención de nombres: `##-descripcion-significativa.png`
 **Para insertar capturas en los docs:**
 
 ```markdown
-![Descripción](../screenshots/servicio/##-nombre.png)
+[Descripción de la captura](../screenshots/servicio/##-nombre.png)
 ```
